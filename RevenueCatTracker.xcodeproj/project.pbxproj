@@ -21,6 +21,9 @@
 		4E55AFF425BD964B00BCE0F8 /* LoginActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55AFF325BD964B00BCE0F8 /* LoginActions.swift */; };
 		4E55AFFC25BDA78800BCE0F8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55AFFB25BDA78800BCE0F8 /* Credentials.swift */; };
 		4E55B00125BDA7DB00BCE0F8 /* MainStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E55B00025BDA7DB00BCE0F8 /* MainStateTests.swift */; };
+		4ECD9C7625BDACF8005525F3 /* Thunks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9C7525BDACF8005525F3 /* Thunks.swift */; };
+		4ECD9C9225BDC92B005525F3 /* apiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9C9125BDC92B005525F3 /* apiClient.swift */; };
+		4ECD9C9825BDCEEF005525F3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9C9725BDCEEF005525F3 /* DashboardViewController.swift */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -67,6 +70,9 @@
 		4E55AFF325BD964B00BCE0F8 /* LoginActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginActions.swift; sourceTree = "<group>"; };
 		4E55AFFB25BDA78800BCE0F8 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		4E55B00025BDA7DB00BCE0F8 /* MainStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateTests.swift; sourceTree = "<group>"; };
+		4ECD9C7525BDACF8005525F3 /* Thunks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thunks.swift; sourceTree = "<group>"; };
+		4ECD9C9125BDC92B005525F3 /* apiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiClient.swift; sourceTree = "<group>"; };
+		4ECD9C9725BDCEEF005525F3 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,15 +134,17 @@
 		4E55AF2D25BD7F7A00BCE0F8 /* RevenueCatTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9C9625BDCEE4005525F3 /* Dashboard */,
+				4E55B00525BDABE200BCE0F8 /* Main */,
 				4E55AFA825BD8A3500BCE0F8 /* Model */,
-				4E55AF8225BD830500BCE0F8 /* Networking */,
 				4E55AF7925BD82F200BCE0F8 /* Login */,
 				4E55AF2E25BD7F7A00BCE0F8 /* AppDelegate.swift */,
 				4E55AF3225BD7F7A00BCE0F8 /* ViewController.swift */,
 				4E55AF3725BD7F8000BCE0F8 /* Assets.xcassets */,
 				4E55AF3925BD7F8000BCE0F8 /* LaunchScreen.storyboard */,
 				4E55AF3C25BD7F8000BCE0F8 /* Info.plist */,
-				4E55AF9425BD84B400BCE0F8 /* MainState.swift */,
+				4E55AF8225BD830500BCE0F8 /* Networking */,
+				4ECD9C7525BDACF8005525F3 /* Thunks.swift */,
 			);
 			path = RevenueCatTracker;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 		4E55AF8225BD830500BCE0F8 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9C9125BDC92B005525F3 /* apiClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -185,6 +194,22 @@
 				4E55AFFB25BDA78800BCE0F8 /* Credentials.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4E55B00525BDABE200BCE0F8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4E55AF9425BD84B400BCE0F8 /* MainState.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		4ECD9C9625BDCEE4005525F3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9C9725BDCEEF005525F3 /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {
@@ -451,9 +476,12 @@
 				4E55AF8425BD839200BCE0F8 /* LoginViewController.swift in Sources */,
 				4E55AF9525BD84B400BCE0F8 /* MainState.swift in Sources */,
 				4E55AFFC25BDA78800BCE0F8 /* Credentials.swift in Sources */,
+				4ECD9C7625BDACF8005525F3 /* Thunks.swift in Sources */,
 				4E55AF3325BD7F7A00BCE0F8 /* ViewController.swift in Sources */,
 				4E55AFAA25BD8A4300BCE0F8 /* Auth.swift in Sources */,
+				4ECD9C9825BDCEEF005525F3 /* DashboardViewController.swift in Sources */,
 				4E55AF2F25BD7F7A00BCE0F8 /* AppDelegate.swift in Sources */,
+				4ECD9C9225BDC92B005525F3 /* apiClient.swift in Sources */,
 				4E55AF7E25BD82FE00BCE0F8 /* LoginViewModel.swift in Sources */,
 				4E55AFF425BD964B00BCE0F8 /* LoginActions.swift in Sources */,
 			);

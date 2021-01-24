@@ -11,7 +11,7 @@ import ReSwift
 import SnapKit
 
 class LoginViewController: UIViewController {
-    private let viewModel: LoginViewModel
+    fileprivate let viewModel: LoginViewModel
     private let loginView: LoginView
     
     init(viewModel: LoginViewModel) {
@@ -46,6 +46,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         loginView.textFields.forEach({ $0.delegate = self })
+        loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+    }
+    
+    @objc func loginTapped() {
+        mainStore.dispatch(loginRevenueCat)
+    }
+    
+    func navigateToDashboard() {
+        let dashboard = DashboardViewController()
+        dashboard.modalPresentationStyle = .fullScreen
+        present(dashboard, animated: true, completion: nil)
     }
 }
 
@@ -56,6 +67,14 @@ extension LoginViewController: StoreSubscriber {
     func newState(state: LoginViewModel.LoginState) {
         loginView.emailTextField.text = state.credentials.email
         loginView.passwordTextField.text = state.credentials.password
+        
+        if viewModel.currentState?.auth == nil && state.auth != nil {
+            DispatchQueue.main.async {
+                self.navigateToDashboard()
+            }
+        }
+        
+        viewModel.currentState = state
     }
 }
 

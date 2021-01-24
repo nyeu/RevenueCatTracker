@@ -8,8 +8,9 @@
 import Foundation
 import ReSwift
 
-struct LoginViewModel {
-    
+class LoginViewModel {
+    var currentState: LoginState?
+
     func loginTapped() {
         let credentials = mainStore.state.credentials
     }
@@ -22,7 +23,7 @@ extension LoginViewModel {
         
         init(_ state: MainState) {
             credentials = state.credentials
-            auth = nil
+            auth = state.auth
         }
     }
 }

@@ -6,6 +6,7 @@ target 'RevenueCatTracker' do
   use_frameworks!
 
   pod 'ReSwift'
+  pod 'ReSwiftThunk'
   pod 'SnapKit'
   pod 'Alamofire', '~> 5.2'
   pod 'IQKeyboardManagerSwift'
@@ -17,6 +18,7 @@ target 'RevenueCatTracker' do
 
   target 'RevenueCatTrackerUITests' do
     # Pods for testing
+    pod 'ReSwiftThunk/ExpectThunk'
   end
 
 end

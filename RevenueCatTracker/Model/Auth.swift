@@ -14,7 +14,7 @@ struct Auth: Codable, Equatable {
 
 extension Auth {
     fileprivate enum CodingKeys: String, CodingKey {
-        case authenticationToken = "authentication_tokens"
+        case authenticationToken = "authentication_token"
         case expirationToken = "authentication_token_expiration"
     }
 }

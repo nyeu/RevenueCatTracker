@@ -44,6 +44,19 @@ class MainStateTests: XCTestCase {
         XCTAssertEqual(state.credentials.email, "test@gmail.com")
         XCTAssertEqual(state.credentials.password, "password")
     }
+    
+    func testAuthSuccessfully() {
+        let token = "aToken"
+        let expirationDate = "ExpirationDate"
+        let auth = Auth(authenticationToken: token,
+                        expirationToken: expirationDate)
+        let action = MainStateAction.authSuccessfully(auth)
+        
+        let state = mainReducer(action: action, state: nil)
+
+        XCTAssertEqual(state.auth?.authenticationToken, token)
+        XCTAssertEqual(state.auth?.expirationToken, expirationDate)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

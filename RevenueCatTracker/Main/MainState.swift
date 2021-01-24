@@ -7,7 +7,7 @@
 
 import Foundation
 import ReSwift
-
+import ReSwiftThunk
 
 struct MainState: StateType, Equatable {
     var credentials: Credentials = Credentials(email: "", password: "")
@@ -25,6 +25,8 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     switch action {
     case .login(let credentials):
         state.credentials = credentials
+    case .authSuccessfully(let auth):
+        state.auth = auth
     }
 
     return state
@@ -32,12 +34,14 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
 
 enum MainStateAction: Action {
     case login(Credentials)
+    case authSuccessfully(Auth)
 }
 
+let thunksMiddleware: Middleware<MainState> = createThunkMiddleware()
 
 let mainStore = Store(
     reducer: mainReducer,
     state: MainState(),
-    middleware: []
+    middleware: [thunksMiddleware]
 )
 
