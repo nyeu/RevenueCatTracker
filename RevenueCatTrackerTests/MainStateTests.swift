@@ -41,8 +41,8 @@ class MainStateTests: XCTestCase {
         
         let state = mainReducer(action: action, state: nil)
         
-        XCTAssertEqual(state.credentials.email, "test@gmail.com")
-        XCTAssertEqual(state.credentials.password, "password")
+        XCTAssertEqual(state.credentials?.email, "test@gmail.com")
+        XCTAssertEqual(state.credentials?.password, "password")
     }
     
     func testAuthSuccessfully() {
@@ -50,12 +50,17 @@ class MainStateTests: XCTestCase {
         let expirationDate = "ExpirationDate"
         let auth = Auth(authenticationToken: token,
                         expirationToken: expirationDate)
-        let action = MainStateAction.authSuccessfully(auth)
+        let action = MainStateAction.auth(Result.success(auth))
         
         let state = mainReducer(action: action, state: nil)
 
-        XCTAssertEqual(state.auth?.authenticationToken, token)
-        XCTAssertEqual(state.auth?.expirationToken, expirationDate)
+        switch state.auth {
+        case .success(let a):
+            XCTAssertEqual(a.authenticationToken, token)
+            XCTAssertEqual(a.expirationToken, expirationDate)
+        default:
+            XCTFail("Failed to get Auth")
+        }
     }
 
     func testPerformanceExample() throws {

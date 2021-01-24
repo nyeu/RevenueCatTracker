@@ -15,7 +15,6 @@ class DashboardViewModel {
     }
 }
 
-
 extension DashboardViewModel {
     struct DashboardState: Equatable {
         var overview: Overview?
