@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     }
     
     func navigateToDashboard() {
-        let dashboard = DashboardViewController()
+        let dashboard = DashboardViewController(viewModel: DashboardViewModel())
         dashboard.modalPresentationStyle = .fullScreen
         present(dashboard, animated: true, completion: nil)
     }
@@ -65,12 +65,19 @@ extension LoginViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = LoginViewModel.LoginState
     
     func newState(state: LoginViewModel.LoginState) {
-        loginView.emailTextField.text = state.credentials.email
-        loginView.passwordTextField.text = state.credentials.password
+        loginView.emailTextField.text = state.credentials?.email
+        loginView.passwordTextField.text = state.credentials?.password
         
-        if viewModel.currentState?.auth == nil && state.auth != nil {
-            DispatchQueue.main.async {
-                self.navigateToDashboard()
+        if state.auth != viewModel.currentState?.auth, let auth = state.auth {
+            switch auth {
+            case .success(let a):
+                viewModel.persistAuth(a)
+                DispatchQueue.main.async {
+                    self.navigateToDashboard()
+                }
+            case .error:
+                // error
+                break
             }
         }
         
@@ -89,11 +96,11 @@ extension LoginViewController: UITextFieldDelegate {
             DispatchQueue.main.async {
                 switch textField {
                 case self.loginView.emailTextField:
-                    let credential = Credentials(email: updatedText, password: mainStore.state.credentials.password)
+                    let credential = Credentials(email: updatedText, password: mainStore.state.credentials?.password ?? "")
                     mainStore.dispatch(MainStateAction.login(credential))
                     
                 case self.loginView.passwordTextField:
-                    mainStore.dispatch(MainStateAction.login(Credentials(email: mainStore.state.credentials.email, password: updatedText)))
+                    mainStore.dispatch(MainStateAction.login(Credentials(email: mainStore.state.credentials?.email ?? "", password: updatedText)))
                 default:
                     break
                 }

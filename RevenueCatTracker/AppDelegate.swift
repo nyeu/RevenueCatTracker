@@ -20,10 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = LoginViewController(viewModel: LoginViewModel())
+        window?.rootViewController = LandingViewController(viewModel: LandingViewModel())
         
         return true
     }
-
 }
 

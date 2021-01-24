@@ -7,39 +7,32 @@
 
 import Foundation
 
-struct TMDBPagedResult<T: Codable>: Codable {
-    let results: [T]
-    let page: Int
-    let totalPages: Int
-    let totalResults: Int
-
-    private enum CodingKeys: String, CodingKey {
-        case results
-        case page
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
-    }
+enum Result<T: Codable & Equatable>: Equatable {
+  case success(T)
+  case error
 }
 
 protocol RevenueCatFetcher {
-//    func fetchMovieGenres(completion: @escaping (GenreList?) -> Void)
-//    func fetchUpcomingMovies(page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void)
-//    func searchMovies(query: String, page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void)
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void)
+    func overview(completion: @escaping (Overview?) -> Void)
 }
 
 class ApiClient: RevenueCatFetcher {
-//    let apiKey = "1f54bd990f1cdfb230adb312546d765d"
     let baseUrl = "https://api.revenuecat.com/v1/developers"
     
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void) {
         let json = [
-            "email": "joancardona.17@gmail.com",//credentials.email,
-            "password": "*bGB9LF3Fke_Zu.d_F7mrgH39Yg!k6F@cuNjrmy8" //credentials.password
+            "email": credentials.email,
+            "password": credentials.password
         ]
         let jsonData = try! JSONSerialization.data(withJSONObject: json, options: [])
 
         post(url: "\(baseUrl)/login", params: jsonData, completion: completion)
+    }
+    
+    func overview(completion: @escaping (Overview?) -> Void) {
+        let url = "\(baseUrl)/me/overview"
+        fetch(url: url, completion: completion)
     }
 
     func fetch<T: Codable>(url: String, completion: @escaping (T?) -> Void) {
@@ -52,7 +45,6 @@ class ApiClient: RevenueCatFetcher {
             else {
                 return completion(nil)
             }
-
             completion(obj)
         }
 
@@ -64,7 +56,7 @@ class ApiClient: RevenueCatFetcher {
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("XMLHttpRequest", forHTTPHeaderField: "X-Requested-With")
+        request.setValue("ios", forHTTPHeaderField: "X-Requested-With")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         

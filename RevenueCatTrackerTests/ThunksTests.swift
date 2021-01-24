@@ -6,6 +6,9 @@
 //
 
 import XCTest
+import ReSwift
+import ReSwiftThunk
+//import ReSwiftThunk
 
 class ThunksTests: XCTestCase {
 
@@ -20,6 +23,10 @@ class ThunksTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testLoginThunk() {
+        
     }
 
     func testPerformanceExample() throws {

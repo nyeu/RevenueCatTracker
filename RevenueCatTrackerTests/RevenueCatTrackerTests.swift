@@ -6,6 +6,9 @@
 //
 
 import XCTest
+import ReSwift
+//import ReSwiftThunk
+
 @testable import RevenueCatTracker
 
 class RevenueCatTrackerTests: XCTestCase {
@@ -16,11 +19,6 @@ class RevenueCatTrackerTests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testPerformanceExample() throws {
