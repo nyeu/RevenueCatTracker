@@ -8,7 +8,8 @@ target 'RevenueCatTracker' do
   pod 'ReSwift'
   pod 'SnapKit'
   pod 'Alamofire', '~> 5.2'
-
+  pod 'IQKeyboardManagerSwift'
+  
   target 'RevenueCatTrackerTests' do
     inherit! :search_paths
     # Pods for testing
