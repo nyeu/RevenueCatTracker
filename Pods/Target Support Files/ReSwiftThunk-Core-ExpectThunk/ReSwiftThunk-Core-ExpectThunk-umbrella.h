@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "ReSwift_Thunk.h"
 
-FOUNDATION_EXPORT double AlamofireVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
+FOUNDATION_EXPORT double ReSwiftThunkVersionNumber;
+FOUNDATION_EXPORT const unsigned char ReSwiftThunkVersionString[];
 

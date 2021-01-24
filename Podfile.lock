@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.4.1)
   - IQKeyboardManagerSwift (6.5.6)
   - ReSwift (6.0.0)
   - ReSwiftThunk (2.0.1):
@@ -13,7 +12,6 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
   - IQKeyboardManagerSwift
   - ReSwift
   - ReSwiftThunk
@@ -22,19 +20,17 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - IQKeyboardManagerSwift
     - ReSwift
     - ReSwiftThunk
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   ReSwift: 14e6f9409fe6bdc635e588208296a01f43b959c9
   ReSwiftThunk: 7ca5145764be6f30b62db88a52d170133954629e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 9213479dbdf6452e93becf798af807b15775d5d4
+PODFILE CHECKSUM: 9342a15ad60111dc069cbdd326940ddc70d1c27a
 
 COCOAPODS: 1.10.1
