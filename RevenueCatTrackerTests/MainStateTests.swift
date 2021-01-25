@@ -45,7 +45,7 @@ class MainStateTests: XCTestCase {
         XCTAssertEqual(state.credentials?.password, "password")
     }
     
-    func testAuthSuccessfully() {
+    func testAuth() {
         let token = "aToken"
         let expirationDate = "ExpirationDate"
         let auth = Auth(authenticationToken: token,
@@ -61,6 +61,23 @@ class MainStateTests: XCTestCase {
         default:
             XCTFail("Failed to get Auth")
         }
+    }
+    
+    func testOverview() {
+        let mockedIntValue = 10
+        let mockedDoubleValue = 100.0
+        let overview = Overview(activeSubscribers: mockedIntValue,
+                                activeTrials: mockedIntValue,
+                                activeUsers: mockedIntValue,
+                                installs: mockedIntValue,
+                                mrr: mockedDoubleValue,
+                                revenue: mockedDoubleValue)
+        
+        let action = MainStateAction.overviewFetched(overview)
+        
+        let state = mainReducer(action: action, state: nil)
+        
+        XCTAssertEqual(state.overview, overview)
     }
 
     func testPerformanceExample() throws {

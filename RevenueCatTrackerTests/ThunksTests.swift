@@ -8,7 +8,6 @@
 import XCTest
 import ReSwift
 import ReSwiftThunk
-//import ReSwiftThunk
 
 class ThunksTests: XCTestCase {
 

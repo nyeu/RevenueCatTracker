@@ -14,10 +14,17 @@ struct Overview: Codable, Equatable {
     let installs: Int
     let mrr: Double
     let revenue: Double
+    
+    let orderedKeys: [Overview.CodingKeys] = [CodingKeys.revenue,
+                                 CodingKeys.mrr,
+                                 CodingKeys.activeSubscribers,
+                                 CodingKeys.activeTrials,
+                                 CodingKeys.activeUsers,
+                                 CodingKeys.installs]
 }
 
 extension Overview {
-    fileprivate enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case activeSubscribers = "active_subscribers_count"
         case activeTrials = "active_trials_count"
         case activeUsers = "active_users_count"

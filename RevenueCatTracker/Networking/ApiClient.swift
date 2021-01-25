@@ -38,7 +38,14 @@ class ApiClient: RevenueCatFetcher {
     func fetch<T: Codable>(url: String, completion: @escaping (T?) -> Void) {
         guard let url = URL(string: url) else { return completion(nil) }
 
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("ios-client", forHTTPHeaderField: "X-Requested-With")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+//        let task = URLSession.shared.dataTask(with: request)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, _, _ in
             guard
                 let data = data,
                 let obj = try? JSONDecoder().decode(T.self, from: data)
@@ -53,10 +60,10 @@ class ApiClient: RevenueCatFetcher {
     
     func post<T: Codable>(url: String, params: Data?, completion: @escaping (T?) -> Void) {
         guard let url = URL(string: url) else { return completion(nil) }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("ios", forHTTPHeaderField: "X-Requested-With")
+        request.setValue("ios-client", forHTTPHeaderField: "X-Requested-With")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
