@@ -54,9 +54,11 @@ class LoginViewController: UIViewController {
     }
     
     func navigateToDashboard() {
-        let dashboard = DashboardViewController(viewModel: DashboardViewModel())
-        dashboard.modalPresentationStyle = .fullScreen
-        present(dashboard, animated: true, completion: nil)
+        let tabbar = TabbarViewController()
+        let nav = UINavigationController(rootViewController: tabbar)
+        nav.setNavigationBarHidden(true, animated: false)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
 }
 
