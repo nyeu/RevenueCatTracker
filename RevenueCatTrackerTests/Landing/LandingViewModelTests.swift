@@ -10,6 +10,7 @@ import ReSwift
 
 @testable import RevenueCatTracker
 
+
 class LandingViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -58,5 +59,4 @@ class LandingViewModelTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
