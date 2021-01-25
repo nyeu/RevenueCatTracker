@@ -11,7 +11,7 @@ class LandingViewModel {
     var currentState: LandingState?
     
     func retrieveAuth() {
-        if let authObject = UserDefaults.standard.object(forKey: "kAuth") as? Data {
+        if let authObject = UserDefaults.standard.object(forKey: Auth.persistedKey) as? Data {
             let decoder = JSONDecoder()
             if let auth = try? decoder.decode(Auth.self, from: authObject) {
                 mainStore.dispatch(MainStateAction.auth(Result.success(auth)))

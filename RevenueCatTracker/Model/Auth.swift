@@ -8,6 +8,8 @@
 import Foundation
 
 struct Auth: Codable, Equatable {
+    static let persistedKey: String = "kAuth"
+    
     let authenticationToken: String
     let expirationToken: String
 }

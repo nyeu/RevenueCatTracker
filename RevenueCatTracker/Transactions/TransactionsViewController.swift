@@ -54,6 +54,7 @@ class TransactionsViewController: UIViewController {
     }
 }
 
+// MARK: StoreSubscriber
 extension TransactionsViewController: TransactionsViewModelDelegate {
     func updateView(newState: TransactionsViewModel.TransactionState, oldState: TransactionsViewModel.TransactionState?) {
         transactionView.collectionView.reloadData()

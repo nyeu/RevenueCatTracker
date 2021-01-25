@@ -11,6 +11,7 @@ import UIKit
 class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
     var dashboardViewController: DashboardViewController!
     var transactionsViewController: TransactionsViewController!
+    var settingsViewController: SettingsViewController!
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -40,8 +41,14 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
         transactionsViewController = TransactionsViewController(viewModel: TransactionsViewModel())
         let transTabBar = UITabBarItem(title: "Transactions", image: nil, selectedImage: nil)
         transactionsViewController.tabBarItem = transTabBar
+        
+        settingsViewController = SettingsViewController(viewModel: SettingsViewModel())
+        let settTabBar = UITabBarItem(title: "Settings", image: nil, selectedImage: nil)
+        settingsViewController.tabBarItem = settTabBar
+        
         self.viewControllers = [dashboardViewController,
-                                transactionsViewController]
+                                transactionsViewController,
+                                settingsViewController]
     }
 
     override func viewWillAppear(_ animated: Bool) {

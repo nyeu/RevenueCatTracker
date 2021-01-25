@@ -43,7 +43,7 @@ class LandingViewModelTests: XCTestCase {
                         expirationToken: "122")
         let defaults = UserDefaults.standard
         guard let encoder = try? JSONEncoder().encode(auth) else { fatalError("Couldn't encode auth") }
-        defaults.set(encoder, forKey: "kAuth")
+        defaults.set(encoder, forKey: Auth.persistedKey)
         let action = MainStateAction.auth(Result.success(auth))
         let state = mainReducer(action: action, state: nil)
         let viewModel = LandingViewModel()
