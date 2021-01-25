@@ -1,21 +1,21 @@
 //
-//  DashboardView.swift
+//  TransactionsView.swift
 //  RevenueCatTracker
 //
-//  Created by Joan Cardona on 24/1/21.
+//  Created by Joan Cardona on 25/1/21.
 //
 
 import Foundation
 import UIKit
 
-class DashboardView: UIView {
+class TransactionsView: UIView {
     let titleLabel: UILabel = {
         let l = UILabel()
         l.textColor = UIColor(named: "primaryText")
         l.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         l.numberOfLines = 0
         l.textAlignment = .natural
-        l.text = "Dashboard"
+        l.text = "Transactions"
         l.allowsDefaultTighteningForTruncation = true
         l.adjustsFontForContentSizeCategory = true
         return l
@@ -24,8 +24,8 @@ class DashboardView: UIView {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {() -> UICollectionViewFlowLayout in
         let viewFlowLayout = UICollectionViewFlowLayout()
         viewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        viewFlowLayout.minimumLineSpacing = 10
-        viewFlowLayout.minimumInteritemSpacing = 0.0
+        viewFlowLayout.minimumLineSpacing = 20
+        viewFlowLayout.minimumInteritemSpacing = 10.0
         viewFlowLayout.scrollDirection = .vertical
         return viewFlowLayout
     }())

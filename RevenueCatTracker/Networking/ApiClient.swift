@@ -15,10 +15,18 @@ enum Result<T: Codable & Equatable>: Equatable {
 protocol RevenueCatFetcher {
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void)
     func overview(completion: @escaping (Overview?) -> Void)
+    func transactions(completion: @escaping (TransactionResult?) -> Void)
 }
 
 class ApiClient: RevenueCatFetcher {
     let baseUrl = "https://api.revenuecat.com/v1/developers"
+    
+    private func urlRequestWithBasicHeaders(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.setValue("ios-client", forHTTPHeaderField: "X-Requested-With")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
     
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void) {
         let json = [
@@ -26,7 +34,6 @@ class ApiClient: RevenueCatFetcher {
             "password": credentials.password
         ]
         let jsonData = try! JSONSerialization.data(withJSONObject: json, options: [])
-
         post(url: "\(baseUrl)/login", params: jsonData, completion: completion)
     }
     
@@ -34,17 +41,18 @@ class ApiClient: RevenueCatFetcher {
         let url = "\(baseUrl)/me/overview"
         fetch(url: url, completion: completion)
     }
+    
+    func transactions(completion: @escaping (TransactionResult?) -> Void) {
+        let url = "\(baseUrl)/me/transactions"
+        fetch(url: url, completion: completion)
+    }
 
     func fetch<T: Codable>(url: String, completion: @escaping (T?) -> Void) {
         guard let url = URL(string: url) else { return completion(nil) }
 
-        var request = URLRequest(url: url)
+        var request = urlRequestWithBasicHeaders(url: url)
         request.httpMethod = "GET"
-        request.setValue("ios-client", forHTTPHeaderField: "X-Requested-With")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-//        let task = URLSession.shared.dataTask(with: request)
-        
+                
         let task = URLSession.shared.dataTask(with: request) { data, _, _ in
             guard
                 let data = data,
@@ -61,11 +69,8 @@ class ApiClient: RevenueCatFetcher {
     func post<T: Codable>(url: String, params: Data?, completion: @escaping (T?) -> Void) {
         guard let url = URL(string: url) else { return completion(nil) }
         
-        var request = URLRequest(url: url)
+        var request = urlRequestWithBasicHeaders(url: url)
         request.httpMethod = "POST"
-        request.setValue("ios-client", forHTTPHeaderField: "X-Requested-With")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         
         let task = URLSession.shared.uploadTask(with: request, from: params) { data, response, error in
             guard

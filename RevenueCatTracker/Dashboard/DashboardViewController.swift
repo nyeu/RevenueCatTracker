@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
-import ReSwift
 
 class DashboardViewController: UIViewController {
     fileprivate let viewModel: DashboardViewModel
     fileprivate let dashboardView: DashboardView
-    
+    let refresher = UIRefreshControl()
+
     init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
         self.dashboardView = DashboardView()
@@ -32,31 +32,25 @@ class DashboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        mainStore.subscribe(self, transform: {
-            $0.select(DashboardViewModel.DashboardState.init)
-        })
+        viewModel.subscribe()
         viewModel.getOverview()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        mainStore.unsubscribe(self)
+        viewModel.unsubscribe()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "ScreenBackgroundColor")
+        viewModel.delegate = self
         setupCollectionView()
     }
 }
 
-// MARK: StoreSubscriber
-extension DashboardViewController: StoreSubscriber {
-    typealias StoreSubscriberStateType = DashboardViewModel.DashboardState
-    
-    func newState(state: DashboardViewModel.DashboardState) {
-        viewModel.currentState = state
+extension DashboardViewController: DashboardViewModelDelegate {
+    func updateView(newState: DashboardViewModel.DashboardState, oldState: DashboardViewModel.DashboardState?) {
         dashboardView.collectionView.reloadData()
     }
 }
@@ -70,6 +64,9 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
         dashboardView.collectionView.register(DashboardCollectionViewCell.self, forCellWithReuseIdentifier: DashboardCollectionViewCell.kIdentifier)
         dashboardView.collectionView.layer.speed = 2.5
         dashboardView.collectionView.showsHorizontalScrollIndicator = false
+        
+        refresher.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        dashboardView.collectionView.addSubview(refresher)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,7 +74,7 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 100)
+        return CGSize(width: 300, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,5 +105,17 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tr = TransactionsViewController(viewModel: TransactionsViewModel())
+        present(tr, animated: true, completion: nil)
+    }
+    
+    @objc func refreshData() {
+        viewModel.getOverview()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.refresher.endRefreshing()
+        }
     }
 }

@@ -33,6 +33,15 @@
 		4ECD9CF225BEBDE0005525F3 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9CF125BEBDE0005525F3 /* DashboardCollectionViewCell.swift */; };
 		4ECD9D0025BEC5A1005525F3 /* OverviewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9CFF25BEC5A1005525F3 /* OverviewTest.swift */; };
 		4ECD9D0825BEC630005525F3 /* OverviewData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD9D0725BEC62F005525F3 /* OverviewData.json */; };
+		4ECD9D1425BEC983005525F3 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D1325BEC983005525F3 /* LoginViewModelTests.swift */; };
+		4ECD9D2025BEC993005525F3 /* LandingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D1F25BEC993005525F3 /* LandingViewModelTests.swift */; };
+		4ECD9D2825BED565005525F3 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D2725BED565005525F3 /* Transaction.swift */; };
+		4ECD9D2E25BEDBC8005525F3 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D2D25BEDBC8005525F3 /* TransactionsViewController.swift */; };
+		4ECD9D3325BEDBD1005525F3 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D3225BEDBD1005525F3 /* TransactionsViewModel.swift */; };
+		4ECD9D3825BEDBD7005525F3 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D3725BEDBD7005525F3 /* TransactionsView.swift */; };
+		4ECD9D4525BEE000005525F3 /* TransactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D4425BEE000005525F3 /* TransactionCollectionViewCell.swift */; };
+		4ECD9D4A25BEEE02005525F3 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D4925BEEE02005525F3 /* TransactionTests.swift */; };
+		4ECD9D4F25BEEED7005525F3 /* TransactionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD9D4E25BEEED7005525F3 /* TransactionData.json */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -91,6 +100,15 @@
 		4ECD9CF125BEBDE0005525F3 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		4ECD9CFF25BEC5A1005525F3 /* OverviewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTest.swift; sourceTree = "<group>"; };
 		4ECD9D0725BEC62F005525F3 /* OverviewData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OverviewData.json; sourceTree = "<group>"; };
+		4ECD9D1325BEC983005525F3 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		4ECD9D1F25BEC993005525F3 /* LandingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModelTests.swift; sourceTree = "<group>"; };
+		4ECD9D2725BED565005525F3 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		4ECD9D2D25BEDBC8005525F3 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		4ECD9D3225BEDBD1005525F3 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		4ECD9D3725BEDBD7005525F3 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
+		4ECD9D4425BEE000005525F3 /* TransactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionViewCell.swift; sourceTree = "<group>"; };
+		4ECD9D4925BEEE02005525F3 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
+		4ECD9D4E25BEEED7005525F3 /* TransactionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TransactionData.json; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +170,7 @@
 		4E55AF2D25BD7F7A00BCE0F8 /* RevenueCatTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D2C25BEDBBB005525F3 /* Transactions */,
 				4ECD9CDB25BDD94E005525F3 /* Landing */,
 				4ECD9C9625BDCEE4005525F3 /* Dashboard */,
 				4E55B00525BDABE200BCE0F8 /* Main */,
@@ -171,6 +190,8 @@
 		4E55AF4425BD7F8100BCE0F8 /* RevenueCatTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D1B25BEC986005525F3 /* Landing */,
+				4ECD9D1225BEC96D005525F3 /* Login */,
 				4ECD9CFE25BEC596005525F3 /* Model */,
 				4E55AF4525BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift */,
 				4E55AF4725BD7F8100BCE0F8 /* Info.plist */,
@@ -214,6 +235,7 @@
 				4E55AFA925BD8A4300BCE0F8 /* Auth.swift */,
 				4E55AFFB25BDA78800BCE0F8 /* Credentials.swift */,
 				4ECD9CD125BDD4F4005525F3 /* Overview.swift */,
+				4ECD9D2725BED565005525F3 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,10 +271,39 @@
 		4ECD9CFE25BEC596005525F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D4E25BEEED7005525F3 /* TransactionData.json */,
 				4ECD9CFF25BEC5A1005525F3 /* OverviewTest.swift */,
 				4ECD9D0725BEC62F005525F3 /* OverviewData.json */,
+				4ECD9D4925BEEE02005525F3 /* TransactionTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4ECD9D1225BEC96D005525F3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D1325BEC983005525F3 /* LoginViewModelTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4ECD9D1B25BEC986005525F3 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D1F25BEC993005525F3 /* LandingViewModelTests.swift */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		4ECD9D2C25BEDBBB005525F3 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D2D25BEDBC8005525F3 /* TransactionsViewController.swift */,
+				4ECD9D3225BEDBD1005525F3 /* TransactionsViewModel.swift */,
+				4ECD9D3725BEDBD7005525F3 /* TransactionsView.swift */,
+				4ECD9D4425BEE000005525F3 /* TransactionCollectionViewCell.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {
@@ -396,6 +447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECD9D4F25BEEED7005525F3 /* TransactionData.json in Resources */,
 				4ECD9D0825BEC630005525F3 /* OverviewData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,18 +591,23 @@
 				4E55AF9525BD84B400BCE0F8 /* MainState.swift in Sources */,
 				4E55AFFC25BDA78800BCE0F8 /* Credentials.swift in Sources */,
 				4ECD9C7625BDACF8005525F3 /* Thunks.swift in Sources */,
+				4ECD9D3825BEDBD7005525F3 /* TransactionsView.swift in Sources */,
 				4E55AF3325BD7F7A00BCE0F8 /* ViewController.swift in Sources */,
 				4ECD9CD225BDD4F4005525F3 /* Overview.swift in Sources */,
 				4E55AFAA25BD8A4300BCE0F8 /* Auth.swift in Sources */,
 				4ECD9C9825BDCEEF005525F3 /* DashboardViewController.swift in Sources */,
+				4ECD9D4525BEE000005525F3 /* TransactionCollectionViewCell.swift in Sources */,
 				4E55AF2F25BD7F7A00BCE0F8 /* AppDelegate.swift in Sources */,
 				4ECD9CED25BDE962005525F3 /* DashboardView.swift in Sources */,
+				4ECD9D2825BED565005525F3 /* Transaction.swift in Sources */,
 				4ECD9CE525BDD990005525F3 /* LandingViewModel.swift in Sources */,
 				4ECD9C9225BDC92B005525F3 /* ApiClient.swift in Sources */,
+				4ECD9D2E25BEDBC8005525F3 /* TransactionsViewController.swift in Sources */,
 				4ECD9CF225BEBDE0005525F3 /* DashboardCollectionViewCell.swift in Sources */,
 				4E55AF7E25BD82FE00BCE0F8 /* LoginViewModel.swift in Sources */,
 				4E55AFF425BD964B00BCE0F8 /* LoginActions.swift in Sources */,
 				4ECD9CDD25BDD958005525F3 /* LandingViewController.swift in Sources */,
+				4ECD9D3325BEDBD1005525F3 /* TransactionsViewModel.swift in Sources */,
 				4ECD9CD725BDD5D2005525F3 /* DashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,8 +616,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECD9D1425BEC983005525F3 /* LoginViewModelTests.swift in Sources */,
 				4ECD9D0025BEC5A1005525F3 /* OverviewTest.swift in Sources */,
+				4ECD9D2025BEC993005525F3 /* LandingViewModelTests.swift in Sources */,
 				4ECD9C9D25BDD1A3005525F3 /* ThunksTests.swift in Sources */,
+				4ECD9D4A25BEEE02005525F3 /* TransactionTests.swift in Sources */,
 				4E55B00125BDA7DB00BCE0F8 /* MainStateTests.swift in Sources */,
 				4E55AF4625BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift in Sources */,
 			);

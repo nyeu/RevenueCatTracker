@@ -25,7 +25,7 @@ class LoginView: UIView {
     let emailTextField: UITextField = {
         let t = UITextField()
         t.placeholder = "Email"
-        t.textColor = .black
+        t.textColor = UIColor(named: "primaryText")
         t.keyboardType = .emailAddress
         t.autocapitalizationType = .none
         return t
@@ -35,7 +35,7 @@ class LoginView: UIView {
         let t = UITextField()
         t.isSecureTextEntry = true
         t.placeholder = "Password"
-        t.textColor = .black
+        t.textColor = UIColor(named: "primaryText")
         return t
     }()
     

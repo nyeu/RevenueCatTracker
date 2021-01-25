@@ -12,26 +12,34 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     static let kIdentifier = "kDashboardCollectionViewCell"
     
     let container: UIView = {
-        return UIView()
+        let v = UIView()
+        v.backgroundColor = UIColor(named: "ClearBackgroundColor")
+        v.layer.cornerRadius = 10.0
+        v.layer.masksToBounds = true
+        v.layer.borderWidth = 2.0
+        v.layer.borderColor = UIColor.gray.cgColor
+        return v
     }()
     
     private lazy var valueLabel: UILabel = {
         let l = UILabel()
-        l.textColor = .black
+        l.textColor = UIColor(named: "primaryText")
         l.font = UIFont.preferredFont(forTextStyle: .title1)
         l.numberOfLines = 0
-        l.textAlignment = .left
+        l.textAlignment = .center
         l.allowsDefaultTighteningForTruncation = true
+        l.adjustsFontForContentSizeCategory = true
         return l
     }()
     
     private lazy var titleLabel: UILabel = {
         let l = UILabel()
-        l.textColor = .black
+        l.textColor = UIColor(named: "primaryText")
         l.font = UIFont.preferredFont(forTextStyle: .body)
         l.numberOfLines = 0
-        l.textAlignment = .left
+        l.textAlignment = .center
         l.allowsDefaultTighteningForTruncation = true
+        l.adjustsFontForContentSizeCategory = true
         return l
     }()
     
@@ -60,11 +68,13 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         }
         
         valueLabel.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+            make.right.equalToSuperview().offset(-16)
+            make.top.left.equalToSuperview().offset(16)
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalToSuperview()
+            make.bottom.right.equalToSuperview().offset(-16)
+            make.left.equalToSuperview().offset(16)
             make.top.equalTo(valueLabel.snp.bottom).offset(10)
         }
     }

@@ -13,6 +13,7 @@ struct MainState: StateType, Equatable {
     var credentials: Credentials?
     var auth: Result<Auth>?
     var overview: Overview?
+    var transactions: [Transaction]?
 }
 
 func mainReducer(action: Action, state: MainState?) -> MainState {
@@ -29,6 +30,8 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
         state.auth = auth
     case .overviewFetched(let overview):
         state.overview = overview
+    case .transactionsFetched(let transactions):
+        state.transactions = transactions
     }
 
     return state
@@ -38,6 +41,7 @@ enum MainStateAction: Action {
     case login(Credentials)
     case auth(Result<Auth>)
     case overviewFetched(Overview)
+    case transactionsFetched([Transaction])
 }
 
 let thunksMiddleware: Middleware<MainState> = createThunkMiddleware()
