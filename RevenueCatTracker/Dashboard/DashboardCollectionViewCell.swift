@@ -16,7 +16,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         v.backgroundColor = UIColor(named: "ClearBackgroundColor")
         v.layer.cornerRadius = 10.0
         v.layer.masksToBounds = true
-        v.layer.borderWidth = 2.0
+        v.layer.borderWidth = 3.0
         v.layer.borderColor = UIColor.gray.cgColor
         return v
     }()

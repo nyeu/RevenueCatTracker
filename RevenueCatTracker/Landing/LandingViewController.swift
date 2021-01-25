@@ -41,9 +41,13 @@ class LandingViewController: UIViewController {
     }
     
     func navigateToDashboard() {
-        let dashboardVC = DashboardViewController(viewModel: DashboardViewModel())
-        dashboardVC.modalPresentationStyle = .fullScreen
-        present(dashboardVC, animated: true, completion: nil)
+        let tabbar = TabbarViewController()
+        tabbar.modalPresentationStyle = .fullScreen
+        present(tabbar, animated: true, completion: nil)
+
+//        let dashboardVC = DashboardViewController(viewModel: DashboardViewModel())
+//        dashboardVC.modalPresentationStyle = .fullScreen
+//        present(dashboardVC, animated: true, completion: nil)
     }
     
     func navigateToLogin() {

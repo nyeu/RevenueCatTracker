@@ -42,6 +42,7 @@
 		4ECD9D4525BEE000005525F3 /* TransactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D4425BEE000005525F3 /* TransactionCollectionViewCell.swift */; };
 		4ECD9D4A25BEEE02005525F3 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D4925BEEE02005525F3 /* TransactionTests.swift */; };
 		4ECD9D4F25BEEED7005525F3 /* TransactionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD9D4E25BEEED7005525F3 /* TransactionData.json */; };
+		4ECD9D5B25BEF20A005525F3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D5A25BEF20A005525F3 /* TabbarViewController.swift */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -109,6 +110,7 @@
 		4ECD9D4425BEE000005525F3 /* TransactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionViewCell.swift; sourceTree = "<group>"; };
 		4ECD9D4925BEEE02005525F3 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		4ECD9D4E25BEEED7005525F3 /* TransactionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TransactionData.json; sourceTree = "<group>"; };
+		4ECD9D5A25BEF20A005525F3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		4E55AF2D25BD7F7A00BCE0F8 /* RevenueCatTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D5925BEF1FE005525F3 /* Tabbar */,
 				4ECD9D2C25BEDBBB005525F3 /* Transactions */,
 				4ECD9CDB25BDD94E005525F3 /* Landing */,
 				4ECD9C9625BDCEE4005525F3 /* Dashboard */,
@@ -304,6 +307,14 @@
 				4ECD9D4425BEE000005525F3 /* TransactionCollectionViewCell.swift */,
 			);
 			path = Transactions;
+			sourceTree = "<group>";
+		};
+		4ECD9D5925BEF1FE005525F3 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D5A25BEF20A005525F3 /* TabbarViewController.swift */,
+			);
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {
@@ -594,6 +605,7 @@
 				4ECD9D3825BEDBD7005525F3 /* TransactionsView.swift in Sources */,
 				4E55AF3325BD7F7A00BCE0F8 /* ViewController.swift in Sources */,
 				4ECD9CD225BDD4F4005525F3 /* Overview.swift in Sources */,
+				4ECD9D5B25BEF20A005525F3 /* TabbarViewController.swift in Sources */,
 				4E55AFAA25BD8A4300BCE0F8 /* Auth.swift in Sources */,
 				4ECD9C9825BDCEEF005525F3 /* DashboardViewController.swift in Sources */,
 				4ECD9D4525BEE000005525F3 /* TransactionCollectionViewCell.swift in Sources */,
