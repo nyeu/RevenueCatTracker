@@ -30,6 +30,9 @@ class TransactionsViewModel: StoreSubscriber {
     func newState(state: TransactionState) {
         let oldState = self.currentState
         self.currentState = state
+        if oldState?.sandboxMode != state.sandboxMode {
+            getTransactions()
+        }
         delegate?.updateView(newState: state, oldState: oldState)
     }
     
@@ -41,10 +44,11 @@ class TransactionsViewModel: StoreSubscriber {
 extension TransactionsViewModel {
     struct TransactionState: Equatable {
         var transactions: [Transaction]?
-        
+        var sandboxMode: Bool
+
         init(_ state: MainState) {
             transactions = state.transactions
+            sandboxMode = state.sandboxMode
         }
     }
 }
-

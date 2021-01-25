@@ -193,13 +193,13 @@
 		4E55AF4425BD7F8100BCE0F8 /* RevenueCatTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D5F25BEF5A5005525F3 /* Main */,
 				4ECD9D1B25BEC986005525F3 /* Landing */,
 				4ECD9D1225BEC96D005525F3 /* Login */,
 				4ECD9CFE25BEC596005525F3 /* Model */,
 				4E55AF4525BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift */,
 				4E55AF4725BD7F8100BCE0F8 /* Info.plist */,
 				4E55B00025BDA7DB00BCE0F8 /* MainStateTests.swift */,
-				4ECD9C9C25BDD1A3005525F3 /* ThunksTests.swift */,
 			);
 			path = RevenueCatTrackerTests;
 			sourceTree = "<group>";
@@ -315,6 +315,14 @@
 				4ECD9D5A25BEF20A005525F3 /* TabbarViewController.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		4ECD9D5F25BEF5A5005525F3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9C9C25BDD1A3005525F3 /* ThunksTests.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {

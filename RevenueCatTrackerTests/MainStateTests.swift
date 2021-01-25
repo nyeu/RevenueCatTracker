@@ -79,6 +79,22 @@ class MainStateTests: XCTestCase {
         
         XCTAssertEqual(state.overview, overview)
     }
+    
+    func testSandboxModeToTrue() {
+        let action = MainStateAction.changeSandboxMode(true)
+        
+        let state = mainReducer(action: action, state: nil)
+        
+        XCTAssertEqual(state.sandboxMode, true)
+    }
+    
+    func testSandboxModeToFalse() {
+        let action = MainStateAction.changeSandboxMode(false)
+        
+        let state = mainReducer(action: action, state: nil)
+        
+        XCTAssertEqual(state.sandboxMode, false)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

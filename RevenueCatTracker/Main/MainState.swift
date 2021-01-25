@@ -14,6 +14,7 @@ struct MainState: StateType, Equatable {
     var auth: Result<Auth>?
     var overview: Overview?
     var transactions: [Transaction]?
+    var sandboxMode: Bool = false
 }
 
 func mainReducer(action: Action, state: MainState?) -> MainState {
@@ -32,6 +33,8 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
         state.overview = overview
     case .transactionsFetched(let transactions):
         state.transactions = transactions
+    case .changeSandboxMode(let isOn):
+        state.sandboxMode = isOn
     }
 
     return state
@@ -42,6 +45,7 @@ enum MainStateAction: Action {
     case auth(Result<Auth>)
     case overviewFetched(Overview)
     case transactionsFetched([Transaction])
+    case changeSandboxMode(Bool)
 }
 
 let thunksMiddleware: Middleware<MainState> = createThunkMiddleware()

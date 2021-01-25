@@ -14,8 +14,8 @@ enum Result<T: Codable & Equatable>: Equatable {
 
 protocol RevenueCatFetcher {
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void)
-    func overview(completion: @escaping (Overview?) -> Void)
-    func transactions(completion: @escaping (TransactionResult?) -> Void)
+    func overview(sandboxMode: Bool, completion: @escaping (Overview?) -> Void)
+    func transactions(sandboxMode: Bool, completion: @escaping (TransactionResult?) -> Void)
 }
 
 class ApiClient: RevenueCatFetcher {
@@ -37,21 +37,32 @@ class ApiClient: RevenueCatFetcher {
         post(url: "\(baseUrl)/login", params: jsonData, completion: completion)
     }
     
-    func overview(completion: @escaping (Overview?) -> Void) {
+    func overview(sandboxMode: Bool, completion: @escaping (Overview?) -> Void) {
         let url = "\(baseUrl)/me/overview"
-        fetch(url: url, completion: completion)
+        var urlComponents = URLComponents(string: url)
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false")
+        ]
+        
+        guard let validURL = urlComponents?.url else { return completion(nil) }
+
+        fetch(url: validURL, completion: completion)
     }
     
-    func transactions(completion: @escaping (TransactionResult?) -> Void) {
+    func transactions(sandboxMode: Bool, completion: @escaping (TransactionResult?) -> Void) {
         let url = "\(baseUrl)/me/transactions"
-        fetch(url: url, completion: completion)
+        var urlComponents = URLComponents(string: url)
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false")
+        ]
+        guard let validURL = urlComponents?.url else { return completion(nil) }
+        fetch(url: validURL, completion: completion)
     }
 
-    func fetch<T: Codable>(url: String, completion: @escaping (T?) -> Void) {
-        guard let url = URL(string: url) else { return completion(nil) }
-
+    func fetch<T: Codable>(url: URL, completion: @escaping (T?) -> Void) {
         var request = urlRequestWithBasicHeaders(url: url)
         request.httpMethod = "GET"
+        
                 
         let task = URLSession.shared.dataTask(with: request) { data, _, _ in
             guard

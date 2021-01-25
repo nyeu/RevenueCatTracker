@@ -31,6 +31,9 @@ class DashboardViewModel: StoreSubscriber {
     func newState(state: DashboardState) {
         let oldState = self.currentState
         self.currentState = state
+        if oldState?.sandboxMode != state.sandboxMode {
+            getOverview()
+        }
         delegate?.updateView(newState: state, oldState: oldState)
     }
     
@@ -42,9 +45,11 @@ class DashboardViewModel: StoreSubscriber {
 extension DashboardViewModel {
     struct DashboardState: Equatable {
         var overview: Overview?
+        var sandboxMode: Bool
         
         init(_ state: MainState) {
             overview = state.overview
+            sandboxMode = state.sandboxMode
         }
     }
 }

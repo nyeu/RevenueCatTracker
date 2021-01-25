@@ -107,11 +107,6 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let tr = TransactionsViewController(viewModel: TransactionsViewModel())
-        present(tr, animated: true, completion: nil)
-    }
-    
     @objc func refreshData() {
         viewModel.getOverview()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {

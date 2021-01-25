@@ -24,7 +24,7 @@ let loginRevenueCat = Thunk<MainState> { dispatch, getState in
 }
 
 let fetchOverview = Thunk<MainState> { dispatch, getState in
-    ApiClient().overview { (overview) in
+    ApiClient().overview(sandboxMode: getState()?.sandboxMode ?? false) { (overview) in
         guard let overview = overview else { return }
         DispatchQueue.main.async {
             dispatch(
@@ -35,7 +35,7 @@ let fetchOverview = Thunk<MainState> { dispatch, getState in
 }
 
 let fetchTransactions = Thunk<MainState> { dispatch, getState in
-    ApiClient().transactions { (transactionResult) in
+    ApiClient().transactions(sandboxMode: getState()?.sandboxMode ?? false) { (transactionResult) in
         guard let transactions = transactionResult?.transactions else { return }
         DispatchQueue.main.async {
             dispatch(

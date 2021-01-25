@@ -46,6 +46,11 @@ class TransactionsViewController: UIViewController {
         view.backgroundColor = UIColor(named: "ScreenBackgroundColor")
         viewModel.delegate = self
         setupCollectionView()
+        transactionView.sandboxSwitch.addTarget(self, action: #selector(sandboxSelected), for: .valueChanged)
+    }
+    
+    @objc func sandboxSelected() {
+        mainStore.dispatch(MainStateAction.changeSandboxMode(transactionView.sandboxSwitch.isOn))
     }
 }
 
