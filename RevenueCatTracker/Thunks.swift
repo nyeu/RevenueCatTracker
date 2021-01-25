@@ -44,3 +44,18 @@ let fetchTransactions = Thunk<MainState> { dispatch, getState in
         }
     }
 }
+
+let fetchSubscriber = Thunk<MainState> { dispatch, getState in
+    guard let transaction = getState()?.selectedTransaction else {
+        return
+    }
+    ApiClient().subscriber(sandboxMode: getState()?.sandboxMode ?? false, appId: transaction.app.id, subscriberId: transaction.subscriberId) { (subscriber) in
+        guard let subscriber = subscriber else { return }
+        DispatchQueue.main.async {
+            dispatch(
+                MainStateAction.updateSubscriber(subscriber.subscriber)
+            )
+        }
+    }
+}
+

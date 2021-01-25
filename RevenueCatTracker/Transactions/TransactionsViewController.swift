@@ -103,6 +103,14 @@ extension TransactionsViewController: UICollectionViewDataSource, UICollectionVi
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let transactions = viewModel.currentState?.transactions else { return }
+        let transaction = transactions[indexPath.row]
+        mainStore.dispatch(MainStateAction.selectTransaction(transaction))
+        let detailTransactionVc = TransactionDetailViewController(viewModel: TransactionDetailViewModel(timeService: TimeService()))
+        navigationController?.pushViewController(detailTransactionVc, animated: true)
+    }
+    
     @objc func refreshData() {
         viewModel.getTransactions()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {

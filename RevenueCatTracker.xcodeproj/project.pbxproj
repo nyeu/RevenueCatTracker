@@ -50,6 +50,16 @@
 		4ECD9D7D25BF12DF005525F3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D7C25BF12DF005525F3 /* App.swift */; };
 		4ECD9D8325BF134C005525F3 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D8225BF134C005525F3 /* TimeService.swift */; };
 		4ECD9D9425BF17A0005525F3 /* TimeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D9325BF17A0005525F3 /* TimeServiceTests.swift */; };
+		4ECD9D9D25BF1F93005525F3 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D9C25BF1F93005525F3 /* TransactionDetailViewController.swift */; };
+		4ECD9DA225BF1F9D005525F3 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DA125BF1F9D005525F3 /* TransactionDetailView.swift */; };
+		4ECD9DA725BF1FA9005525F3 /* TransactionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DA625BF1FA9005525F3 /* TransactionDetailViewModel.swift */; };
+		4ECD9DAF25BF256B005525F3 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DAE25BF256B005525F3 /* Subscriber.swift */; };
+		4ECD9DB425BF2D03005525F3 /* AttributionFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DB325BF2D03005525F3 /* AttributionFields.swift */; };
+		4ECD9DB925BF2F7B005525F3 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DB825BF2F7B005525F3 /* Attribute.swift */; };
+		4ECD9DBE25BF3176005525F3 /* HistoryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DBD25BF3176005525F3 /* HistoryEvent.swift */; };
+		4ECD9DC425BF37DE005525F3 /* TransactionDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DC325BF37DE005525F3 /* TransactionDetailViewModelTests.swift */; };
+		4ECD9DCF25BF3E55005525F3 /* SubscriberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DCE25BF3E55005525F3 /* SubscriberTests.swift */; };
+		4ECD9DD425BF3EF0005525F3 /* SubscriberData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -125,6 +135,16 @@
 		4ECD9D7C25BF12DF005525F3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		4ECD9D8225BF134C005525F3 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
 		4ECD9D9325BF17A0005525F3 /* TimeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeServiceTests.swift; sourceTree = "<group>"; };
+		4ECD9D9C25BF1F93005525F3 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		4ECD9DA125BF1F9D005525F3 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
+		4ECD9DA625BF1FA9005525F3 /* TransactionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewModel.swift; sourceTree = "<group>"; };
+		4ECD9DAE25BF256B005525F3 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		4ECD9DB325BF2D03005525F3 /* AttributionFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionFields.swift; sourceTree = "<group>"; };
+		4ECD9DB825BF2F7B005525F3 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		4ECD9DBD25BF3176005525F3 /* HistoryEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEvent.swift; sourceTree = "<group>"; };
+		4ECD9DC325BF37DE005525F3 /* TransactionDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewModelTests.swift; sourceTree = "<group>"; };
+		4ECD9DCE25BF3E55005525F3 /* SubscriberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberTests.swift; sourceTree = "<group>"; };
+		4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SubscriberData.json; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,10 +206,11 @@
 		4E55AF2D25BD7F7A00BCE0F8 /* RevenueCatTracker */ = {
 			isa = PBXGroup;
 			children = (
-				4ECD9D8125BF1344005525F3 /* Services */,
-				4ECD9D6325BF0587005525F3 /* Settings */,
 				4ECD9D5925BEF1FE005525F3 /* Tabbar */,
+				4ECD9D8125BF1344005525F3 /* Services */,
 				4ECD9D2C25BEDBBB005525F3 /* Transactions */,
+				4ECD9D9B25BF1F86005525F3 /* TransactionDetail */,
+				4ECD9D6325BF0587005525F3 /* Settings */,
 				4ECD9CDB25BDD94E005525F3 /* Landing */,
 				4ECD9C9625BDCEE4005525F3 /* Dashboard */,
 				4E55B00525BDABE200BCE0F8 /* Main */,
@@ -209,6 +230,7 @@
 		4E55AF4425BD7F8100BCE0F8 /* RevenueCatTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9DC225BF37C5005525F3 /* TransactionDetail */,
 				4ECD9D8A25BF176F005525F3 /* Services */,
 				4ECD9D7325BF0C15005525F3 /* Settings */,
 				4ECD9D5F25BEF5A5005525F3 /* Main */,
@@ -217,7 +239,6 @@
 				4ECD9CFE25BEC596005525F3 /* Model */,
 				4E55AF4525BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift */,
 				4E55AF4725BD7F8100BCE0F8 /* Info.plist */,
-				4E55B00025BDA7DB00BCE0F8 /* MainStateTests.swift */,
 			);
 			path = RevenueCatTrackerTests;
 			sourceTree = "<group>";
@@ -258,6 +279,10 @@
 				4ECD9CD125BDD4F4005525F3 /* Overview.swift */,
 				4ECD9D2725BED565005525F3 /* Transaction.swift */,
 				4ECD9D7C25BF12DF005525F3 /* App.swift */,
+				4ECD9DAE25BF256B005525F3 /* Subscriber.swift */,
+				4ECD9DB325BF2D03005525F3 /* AttributionFields.swift */,
+				4ECD9DB825BF2F7B005525F3 /* Attribute.swift */,
+				4ECD9DBD25BF3176005525F3 /* HistoryEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,10 +318,12 @@
 		4ECD9CFE25BEC596005525F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */,
 				4ECD9D4E25BEEED7005525F3 /* TransactionData.json */,
 				4ECD9CFF25BEC5A1005525F3 /* OverviewTest.swift */,
 				4ECD9D0725BEC62F005525F3 /* OverviewData.json */,
 				4ECD9D4925BEEE02005525F3 /* TransactionTests.swift */,
+				4ECD9DCE25BF3E55005525F3 /* SubscriberTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +366,7 @@
 		4ECD9D5F25BEF5A5005525F3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				4E55B00025BDA7DB00BCE0F8 /* MainStateTests.swift */,
 				4ECD9C9C25BDD1A3005525F3 /* ThunksTests.swift */,
 			);
 			path = Main;
@@ -376,6 +404,24 @@
 				4ECD9D9325BF17A0005525F3 /* TimeServiceTests.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		4ECD9D9B25BF1F86005525F3 /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D9C25BF1F93005525F3 /* TransactionDetailViewController.swift */,
+				4ECD9DA125BF1F9D005525F3 /* TransactionDetailView.swift */,
+				4ECD9DA625BF1FA9005525F3 /* TransactionDetailViewModel.swift */,
+			);
+			path = TransactionDetail;
+			sourceTree = "<group>";
+		};
+		4ECD9DC225BF37C5005525F3 /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9DC325BF37DE005525F3 /* TransactionDetailViewModelTests.swift */,
+			);
+			path = TransactionDetail;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {
@@ -520,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ECD9D4F25BEEED7005525F3 /* TransactionData.json in Resources */,
+				4ECD9DD425BF3EF0005525F3 /* SubscriberData.json in Resources */,
 				4ECD9D0825BEC630005525F3 /* OverviewData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,12 +705,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECD9DA725BF1FA9005525F3 /* TransactionDetailViewModel.swift in Sources */,
 				4E55AF9A25BD876B00BCE0F8 /* LoginView.swift in Sources */,
 				4E55AF8425BD839200BCE0F8 /* LoginViewController.swift in Sources */,
 				4E55AF9525BD84B400BCE0F8 /* MainState.swift in Sources */,
 				4ECD9D8325BF134C005525F3 /* TimeService.swift in Sources */,
 				4E55AFFC25BDA78800BCE0F8 /* Credentials.swift in Sources */,
 				4ECD9C7625BDACF8005525F3 /* Thunks.swift in Sources */,
+				4ECD9DA225BF1F9D005525F3 /* TransactionDetailView.swift in Sources */,
 				4ECD9D7D25BF12DF005525F3 /* App.swift in Sources */,
 				4ECD9D3825BEDBD7005525F3 /* TransactionsView.swift in Sources */,
 				4E55AF3325BD7F7A00BCE0F8 /* ViewController.swift in Sources */,
@@ -671,16 +720,21 @@
 				4ECD9D6525BF0591005525F3 /* SettingsViewController.swift in Sources */,
 				4ECD9D5B25BEF20A005525F3 /* TabbarViewController.swift in Sources */,
 				4E55AFAA25BD8A4300BCE0F8 /* Auth.swift in Sources */,
+				4ECD9DAF25BF256B005525F3 /* Subscriber.swift in Sources */,
 				4ECD9C9825BDCEEF005525F3 /* DashboardViewController.swift in Sources */,
 				4ECD9D4525BEE000005525F3 /* TransactionCollectionViewCell.swift in Sources */,
 				4E55AF2F25BD7F7A00BCE0F8 /* AppDelegate.swift in Sources */,
+				4ECD9D9D25BF1F93005525F3 /* TransactionDetailViewController.swift in Sources */,
 				4ECD9CED25BDE962005525F3 /* DashboardView.swift in Sources */,
 				4ECD9D2825BED565005525F3 /* Transaction.swift in Sources */,
+				4ECD9DB425BF2D03005525F3 /* AttributionFields.swift in Sources */,
 				4ECD9CE525BDD990005525F3 /* LandingViewModel.swift in Sources */,
 				4ECD9C9225BDC92B005525F3 /* ApiClient.swift in Sources */,
+				4ECD9DB925BF2F7B005525F3 /* Attribute.swift in Sources */,
 				4ECD9D2E25BEDBC8005525F3 /* TransactionsViewController.swift in Sources */,
 				4ECD9CF225BEBDE0005525F3 /* DashboardCollectionViewCell.swift in Sources */,
 				4E55AF7E25BD82FE00BCE0F8 /* LoginViewModel.swift in Sources */,
+				4ECD9DBE25BF3176005525F3 /* HistoryEvent.swift in Sources */,
 				4ECD9D6F25BF05A0005525F3 /* SettingsView.swift in Sources */,
 				4ECD9D6A25BF0599005525F3 /* SettingsViewModel.swift in Sources */,
 				4E55AFF425BD964B00BCE0F8 /* LoginActions.swift in Sources */,
@@ -700,8 +754,10 @@
 				4ECD9C9D25BDD1A3005525F3 /* ThunksTests.swift in Sources */,
 				4ECD9D4A25BEEE02005525F3 /* TransactionTests.swift in Sources */,
 				4E55B00125BDA7DB00BCE0F8 /* MainStateTests.swift in Sources */,
+				4ECD9DCF25BF3E55005525F3 /* SubscriberTests.swift in Sources */,
 				4E55AF4625BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift in Sources */,
 				4ECD9D7525BF0C24005525F3 /* SettingsViewModelTests.swift in Sources */,
+				4ECD9DC425BF37DE005525F3 /* TransactionDetailViewModelTests.swift in Sources */,
 				4ECD9D9425BF17A0005525F3 /* TimeServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

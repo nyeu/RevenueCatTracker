@@ -16,6 +16,7 @@ protocol RevenueCatFetcher {
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void)
     func overview(sandboxMode: Bool, completion: @escaping (Overview?) -> Void)
     func transactions(sandboxMode: Bool, completion: @escaping (TransactionResult?) -> Void)
+    func subscriber(sandboxMode: Bool, appId: String, subscriberId: String, completion: @escaping (SubscriberResponse?) -> Void)
 }
 
 class ApiClient: RevenueCatFetcher {
@@ -58,6 +59,16 @@ class ApiClient: RevenueCatFetcher {
         guard let validURL = urlComponents?.url else { return completion(nil) }
         fetch(url: validURL, completion: completion)
     }
+    
+    func subscriber(sandboxMode: Bool, appId: String, subscriberId: String, completion: @escaping (SubscriberResponse?) -> Void) {
+        let url = "\(baseUrl)/me/apps/\(appId)/subscribers/\(subscriberId)"
+        var urlComponents = URLComponents(string: url)
+//        urlComponents?.queryItems = [
+//            URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false")
+//        ]
+        guard let validURL = urlComponents?.url else { return completion(nil) }
+        fetch(url: validURL, completion: completion)
+    }
 
     func fetch<T: Codable>(url: URL, completion: @escaping (T?) -> Void) {
         var request = urlRequestWithBasicHeaders(url: url)
@@ -96,3 +107,5 @@ class ApiClient: RevenueCatFetcher {
         task.resume()
     }
 }
+
+
