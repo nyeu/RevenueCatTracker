@@ -18,6 +18,7 @@ class SettingsViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = SettingsState
     let data: [TableViewData] = [
                                 TableViewData(section: .Settings, rowData: TableViewRowData(title: "Help & Support", detail: "I appreciate your feedback, ideas and bug reports.")),
+                                TableViewData(section: .Settings, rowData: TableViewRowData(title: "Prettify transactions screen", detail: "Removes the noise of identifier prefixes.")),
                                  TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Tip Jar", detail: "I appreciate your support")),
                                 TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Rate RC Tracker in the App Store", detail: nil)),
                                 TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Recommend RC Tracker to a friend", detail: nil))]

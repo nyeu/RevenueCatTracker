@@ -47,6 +47,9 @@
 		4ECD9D6A25BF0599005525F3 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D6925BF0599005525F3 /* SettingsViewModel.swift */; };
 		4ECD9D6F25BF05A0005525F3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D6E25BF05A0005525F3 /* SettingsView.swift */; };
 		4ECD9D7525BF0C24005525F3 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D7425BF0C24005525F3 /* SettingsViewModelTests.swift */; };
+		4ECD9D7D25BF12DF005525F3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D7C25BF12DF005525F3 /* App.swift */; };
+		4ECD9D8325BF134C005525F3 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D8225BF134C005525F3 /* TimeService.swift */; };
+		4ECD9D9425BF17A0005525F3 /* TimeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9D9325BF17A0005525F3 /* TimeServiceTests.swift */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -119,6 +122,9 @@
 		4ECD9D6925BF0599005525F3 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		4ECD9D6E25BF05A0005525F3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4ECD9D7425BF0C24005525F3 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		4ECD9D7C25BF12DF005525F3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		4ECD9D8225BF134C005525F3 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
+		4ECD9D9325BF17A0005525F3 /* TimeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeServiceTests.swift; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 		4E55AF2D25BD7F7A00BCE0F8 /* RevenueCatTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D8125BF1344005525F3 /* Services */,
 				4ECD9D6325BF0587005525F3 /* Settings */,
 				4ECD9D5925BEF1FE005525F3 /* Tabbar */,
 				4ECD9D2C25BEDBBB005525F3 /* Transactions */,
@@ -202,6 +209,7 @@
 		4E55AF4425BD7F8100BCE0F8 /* RevenueCatTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9D8A25BF176F005525F3 /* Services */,
 				4ECD9D7325BF0C15005525F3 /* Settings */,
 				4ECD9D5F25BEF5A5005525F3 /* Main */,
 				4ECD9D1B25BEC986005525F3 /* Landing */,
@@ -249,6 +257,7 @@
 				4E55AFFB25BDA78800BCE0F8 /* Credentials.swift */,
 				4ECD9CD125BDD4F4005525F3 /* Overview.swift */,
 				4ECD9D2725BED565005525F3 /* Transaction.swift */,
+				4ECD9D7C25BF12DF005525F3 /* App.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,6 +360,22 @@
 				4ECD9D7425BF0C24005525F3 /* SettingsViewModelTests.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		4ECD9D8125BF1344005525F3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D8225BF134C005525F3 /* TimeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4ECD9D8A25BF176F005525F3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9D9325BF17A0005525F3 /* TimeServiceTests.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {
@@ -636,8 +661,10 @@
 				4E55AF9A25BD876B00BCE0F8 /* LoginView.swift in Sources */,
 				4E55AF8425BD839200BCE0F8 /* LoginViewController.swift in Sources */,
 				4E55AF9525BD84B400BCE0F8 /* MainState.swift in Sources */,
+				4ECD9D8325BF134C005525F3 /* TimeService.swift in Sources */,
 				4E55AFFC25BDA78800BCE0F8 /* Credentials.swift in Sources */,
 				4ECD9C7625BDACF8005525F3 /* Thunks.swift in Sources */,
+				4ECD9D7D25BF12DF005525F3 /* App.swift in Sources */,
 				4ECD9D3825BEDBD7005525F3 /* TransactionsView.swift in Sources */,
 				4E55AF3325BD7F7A00BCE0F8 /* ViewController.swift in Sources */,
 				4ECD9CD225BDD4F4005525F3 /* Overview.swift in Sources */,
@@ -675,6 +702,7 @@
 				4E55B00125BDA7DB00BCE0F8 /* MainStateTests.swift in Sources */,
 				4E55AF4625BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift in Sources */,
 				4ECD9D7525BF0C24005525F3 /* SettingsViewModelTests.swift in Sources */,
+				4ECD9D9425BF17A0005525F3 /* TimeServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

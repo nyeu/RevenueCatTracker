@@ -93,6 +93,13 @@ extension TransactionsViewController: UICollectionViewDataSource, UICollectionVi
         cell.appName = transaction.app.name
         cell.productIdentifier = transaction.productIdentifier
         cell.purchaseTag = transaction.tag.prettify().uppercased()
+        
+        if let expirationDate = viewModel.radableDate(date: transaction.expirationDate) {
+            cell.expiration = "Expires \(expirationDate)"
+        } else {
+            cell.expiration = nil
+        }
+        
         return cell
     }
     

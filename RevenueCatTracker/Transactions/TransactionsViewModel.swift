@@ -16,7 +16,12 @@ class TransactionsViewModel: StoreSubscriber {
     weak var delegate: TransactionsViewModelDelegate?
     var currentState: TransactionState?
     typealias StoreSubscriberStateType = TransactionState
-
+    let timeService: TimeService
+    
+    init(timeService: TimeService) {
+        self.timeService = timeService
+    }
+    
     func subscribe() {
         mainStore.subscribe(self, transform: {
             $0.select(TransactionState.init)
@@ -33,11 +38,16 @@ class TransactionsViewModel: StoreSubscriber {
         if oldState?.sandboxMode != state.sandboxMode {
             getTransactions()
         }
+
         delegate?.updateView(newState: state, oldState: oldState)
     }
     
     func getTransactions() {
         mainStore.dispatch(fetchTransactions)
+    }
+    
+    func radableDate(date: String) -> String? {
+        return(timeService.readableDate(fromDate: date, toDate: timeService.now()))
     }
 }
 

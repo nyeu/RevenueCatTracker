@@ -48,8 +48,9 @@ class TransactionTests: XCTestCase {
                                       wasRefunded: false,
                                       revenue: 10.0,
                                       isSandbox: false,
-                                      expirationDate: "222")
-        
+                                      expirationDate: "222",
+                                      purchasedDate: "222")
+    
         XCTAssertEqual(transaction.tag, .renewal)
     }
     
@@ -63,7 +64,8 @@ class TransactionTests: XCTestCase {
                                       wasRefunded: false,
                                       revenue: 0.0,
                                       isSandbox: false,
-                                      expirationDate: "222")
+                                      expirationDate: "222",
+                                      purchasedDate: "222")
         
         XCTAssertEqual(transaction.tag, .trial)
     }
@@ -78,7 +80,8 @@ class TransactionTests: XCTestCase {
                                       wasRefunded: false,
                                       revenue: 0.0,
                                       isSandbox: false,
-                                      expirationDate: "222")
+                                      expirationDate: "222",
+                                      purchasedDate: "222")
         
         XCTAssertEqual(transaction.tag, .trialConversion)
     }
@@ -93,7 +96,8 @@ class TransactionTests: XCTestCase {
                                       wasRefunded: false,
                                       revenue: 0.0,
                                       isSandbox: false,
-                                      expirationDate: "222")
+                                      expirationDate: "222",
+                                      purchasedDate: "22s")
         
         XCTAssertEqual(transaction.tag, .purchase)
     }

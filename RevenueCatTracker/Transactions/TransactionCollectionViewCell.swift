@@ -87,6 +87,17 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         return l
     }()
     
+    private lazy var expirationLabel: UILabel = {
+        let l = UILabel()
+        l.textColor = UIColor(named: "primaryText")
+        l.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        l.numberOfLines = 0
+        l.textAlignment = .right
+        l.allowsDefaultTighteningForTruncation = true
+        l.adjustsFontForContentSizeCategory = true
+        return l
+    }()
+    
     var revenue: String? {
         didSet {
             revenueLabel.text = revenue
@@ -111,6 +122,11 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var expiration: String? {
+        didSet {
+            expirationLabel.text = expiration
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -126,6 +142,8 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         
         rightStackView.addArrangedSubview(revenueLabel)
         rightStackView.addArrangedSubview(tagLabel)
+        rightStackView.addArrangedSubview(expirationLabel)
+
         
         container.snp.makeConstraints { (make) in
             make.center.width.height.equalToSuperview()

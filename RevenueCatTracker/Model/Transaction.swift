@@ -33,6 +33,7 @@ struct Transaction: Codable, Equatable {
     let revenue: Double
     let isSandbox: Bool
     let expirationDate: String
+    let purchasedDate: String
     var tag: TransactionTag {
         guard !isTrial else {
             return .trial
@@ -59,18 +60,7 @@ extension Transaction {
         case revenue
         case isSandbox = "is_sandbox"
         case expirationDate = "expires_date"
-    }
-}
-
-struct App: Codable, Equatable {
-    let name: String
-    let id: String
-}
-
-extension App {
-    enum CodingKeys: String, CodingKey {
-        case name
-        case id
+        case purchasedDate = "purchase_date"
     }
 }
 

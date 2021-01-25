@@ -38,7 +38,7 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
         let dashTabBar = UITabBarItem(title: "Dashboard", image: nil, selectedImage: nil)
         dashboardViewController.tabBarItem = dashTabBar
         
-        transactionsViewController = TransactionsViewController(viewModel: TransactionsViewModel())
+        transactionsViewController = TransactionsViewController(viewModel: TransactionsViewModel(timeService: TimeService()))
         let transTabBar = UITabBarItem(title: "Transactions", image: nil, selectedImage: nil)
         transactionsViewController.tabBarItem = transTabBar
         
