@@ -11,10 +11,17 @@ import ReSwift
 
 class LandingViewController: UIViewController {
     let viewModel: LandingViewModel
+    private let landingView: LandingView
     
     init(viewModel: LandingViewModel) {
         self.viewModel = viewModel
+        self.landingView = LandingView()
         super.init(nibName: nil, bundle: nil)
+        
+        view.addSubview(landingView)
+        landingView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {

@@ -17,8 +17,28 @@ class LoginView: UIView {
     
     let titleLabel: UILabel = {
         let l = UILabel()
-        l.text = "Log into your account 🐱"
+        l.text = "RC Tracker"
+        l.font = UIFont.preferredFont(forTextStyle: .largeTitle).bold()
+        l.textColor = UIColor(named: "primary")
+        l.numberOfLines = 0
+        l.textAlignment = .center
+        return l
+    }()
+    
+    let messageLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Log into your RevenueCat Account 🐱"
         l.font = UIFont.preferredFont(forTextStyle: .headline)
+        l.textColor = UIColor(named: "primaryText")
+        l.numberOfLines = 0
+        return l
+    }()
+    
+    let messageDetailsLabel: UILabel = {
+        let l = UILabel()
+        l.text = "We don't store any data about your account and we communicate directly with RevenueCat API"
+        l.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        l.numberOfLines = 0
         l.textColor = UIColor(named: "primaryText")
         return l
     }()
@@ -69,13 +89,28 @@ class LoginView: UIView {
         
         addSubview(iconImageView)
         addSubview(titleLabel)
+        addSubview(messageLabel)
+        addSubview(messageDetailsLabel)
         addSubview(stackTextFields)
         addSubview(loginButton)
         
         textFields.forEach({ stackTextFields.addArrangedSubview($0) })
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(30)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(32)
+            make.width.equalToSuperview().offset(-50)
+            make.centerX.equalToSuperview()
+        }
+        
+        messageLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(messageDetailsLabel.snp.top).offset(-16)
+            make.width.equalToSuperview().offset(-50)
+            make.centerX.equalToSuperview()
+        }
+        
+        messageDetailsLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(stackTextFields.snp.top).offset(-32)
+            make.width.equalToSuperview().offset(-50)
             make.centerX.equalToSuperview()
         }
         
@@ -86,7 +121,7 @@ class LoginView: UIView {
         }
         
         loginButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-30)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-32)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
             make.width.equalToSuperview().offset(-50)
@@ -96,6 +131,4 @@ class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
