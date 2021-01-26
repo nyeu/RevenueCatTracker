@@ -43,7 +43,7 @@ class TransactionsViewModel: StoreSubscriber {
         self.currentState = state
         
         if let oldStateSandbox = oldState?.sandboxMode, oldStateSandbox != state.sandboxMode {
-            getTransactions()
+            refreshTransactions()
         }
         if fetchState == .fetching && oldState?.transactions != state.transactions {
             fetchState = .ready
