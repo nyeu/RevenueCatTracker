@@ -74,7 +74,7 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 120)
+        return CGSize(width: 150, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,12 +83,17 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
         guard let overview = viewModel.currentState?.overview else { return cell }
         let key = overview.orderedKeys[indexPath.row]
         
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.maximumFractionDigits = 0
+        numberFormatter.currencySymbol = "$"
+        
         switch key {
         case Overview.CodingKeys.revenue:
-            cell.value = String(Int(ceil(overview.revenue)))
+            cell.value = numberFormatter.string(from: NSNumber(floatLiteral: overview.revenue))
             cell.title = "Revenue"
         case Overview.CodingKeys.mrr:
-            cell.value = String(Int(ceil(overview.mrr)))
+            cell.value = numberFormatter.string(from: NSNumber(floatLiteral: overview.mrr))
             cell.title = "MRR"
         case .activeSubscribers:
             cell.value = String(overview.activeSubscribers)

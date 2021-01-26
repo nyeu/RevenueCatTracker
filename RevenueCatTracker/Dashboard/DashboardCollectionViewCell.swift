@@ -14,28 +14,35 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     let container: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor(named: "ClearBackgroundColor")
-        v.layer.cornerRadius = 10.0
+        v.layer.cornerRadius = 75.0
         v.layer.masksToBounds = true
-        v.layer.borderWidth = 3.0
-        v.layer.borderColor = UIColor.gray.cgColor
+        v.layer.borderWidth = 10.0
+        v.layer.borderColor = UIColor(named: "Navy")?.cgColor
+        return v
+    }()
+    
+    let labelsContainer: UIView = {
+        let v = UIView()
         return v
     }()
     
     private lazy var valueLabel: UILabel = {
         let l = UILabel()
-        l.textColor = UIColor(named: "primaryText")
-        l.font = UIFont.preferredFont(forTextStyle: .title1)
-        l.numberOfLines = 0
+        l.textColor = UIColor(named: "primary")
+        l.font = UIFont.preferredFont(forTextStyle: .title1).bold()
+        l.numberOfLines = 1
         l.textAlignment = .center
         l.allowsDefaultTighteningForTruncation = true
         l.adjustsFontForContentSizeCategory = true
+        l.minimumScaleFactor = (11.0 / UIFont.preferredFont(forTextStyle: .title1).bold().pointSize)
+        l.adjustsFontSizeToFitWidth = true
         return l
     }()
     
     private lazy var titleLabel: UILabel = {
         let l = UILabel()
         l.textColor = UIColor(named: "primaryText")
-        l.font = UIFont.preferredFont(forTextStyle: .body)
+        l.font = UIFont.preferredFont(forTextStyle: .headline)
         l.numberOfLines = 0
         l.textAlignment = .center
         l.allowsDefaultTighteningForTruncation = true
@@ -59,12 +66,17 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         
         contentView.addSubview(container)
-        container.addSubview(valueLabel)
-        container.addSubview(titleLabel)
+        container.addSubview(labelsContainer)
+        labelsContainer.addSubview(valueLabel)
+        labelsContainer.addSubview(titleLabel)
         
         container.snp.makeConstraints { (make) in
-            make.center.width.equalToSuperview()
-            make.height.lessThanOrEqualToSuperview()
+            make.center.width.height.equalToSuperview()
+        }
+        
+        labelsContainer.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.height.width.lessThanOrEqualToSuperview()
         }
         
         valueLabel.snp.makeConstraints { (make) in

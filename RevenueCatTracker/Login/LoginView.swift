@@ -19,6 +19,7 @@ class LoginView: UIView {
         let l = UILabel()
         l.text = "Log into your account 🐱"
         l.font = UIFont.preferredFont(forTextStyle: .headline)
+        l.textColor = UIColor(named: "primaryText")
         return l
     }()
     
@@ -51,7 +52,10 @@ class LoginView: UIView {
         let b = UIButton()
         b.setTitle("Log in", for: .normal)
         b.setTitleColor(.white, for: .normal)
-        b.backgroundColor = .blue
+        b.backgroundColor = UIColor(named: "primary")
+        b.layer.cornerRadius = 10.0
+        b.layer.masksToBounds = true
+        b.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline).bold()
         return b
     }()
     

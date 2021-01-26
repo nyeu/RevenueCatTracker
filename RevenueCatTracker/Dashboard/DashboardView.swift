@@ -23,8 +23,8 @@ class DashboardView: UIView {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {() -> UICollectionViewFlowLayout in
         let viewFlowLayout = UICollectionViewFlowLayout()
-        viewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        viewFlowLayout.minimumLineSpacing = 10
+        viewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
+        viewFlowLayout.minimumLineSpacing = 32
         viewFlowLayout.minimumInteritemSpacing = 0.0
         viewFlowLayout.scrollDirection = .vertical
         return viewFlowLayout

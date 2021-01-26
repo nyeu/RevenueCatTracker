@@ -23,6 +23,7 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.tintColor = UIColor(named: "primary")
         tabBar.barTintColor = .white
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = false
@@ -31,19 +32,19 @@ class TabbarViewController: UITabBarController, UITabBarControllerDelegate {
         let appearance = tabBar.standardAppearance
         appearance.shadowImage = nil
         appearance.shadowColor = nil
-        appearance.backgroundColor = .white
-        tabBar.standardAppearance = appearance;
+        appearance.backgroundColor = UIColor(named: "ClearBackgroundColor")
+        tabBar.standardAppearance = appearance
        
         dashboardViewController = DashboardViewController(viewModel: DashboardViewModel())
-        let dashTabBar = UITabBarItem(title: "Dashboard", image: nil, selectedImage: nil)
+        let dashTabBar = UITabBarItem(title: "Dashboard", image: UIImage(systemName: "bolt.circle"), selectedImage: UIImage(systemName: "bolt.circle"))
         dashboardViewController.tabBarItem = dashTabBar
         
         transactionsViewController = TransactionsViewController(viewModel: TransactionsViewModel(timeService: TimeService()))
-        let transTabBar = UITabBarItem(title: "Transactions", image: nil, selectedImage: nil)
+        let transTabBar = UITabBarItem(title: "Transactions", image: UIImage(systemName: "arrow.right.arrow.left.circle"), selectedImage: UIImage(systemName: "arrow.right.arrow.left.circle"))
         transactionsViewController.tabBarItem = transTabBar
         
         settingsViewController = SettingsViewController(viewModel: SettingsViewModel())
-        let settTabBar = UITabBarItem(title: "Settings", image: nil, selectedImage: nil)
+        let settTabBar = UITabBarItem(title: "Settings", image: UIImage(systemName: "speedometer"), selectedImage: UIImage(systemName: "speedometer"))
         settingsViewController.tabBarItem = settTabBar
         
         self.viewControllers = [dashboardViewController,

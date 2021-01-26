@@ -54,8 +54,8 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     
     private lazy var revenueLabel: UILabel = {
         let l = UILabel()
-        l.textColor = UIColor(named: "primaryText")
-        l.font = UIFont.preferredFont(forTextStyle: .title3)
+        l.textColor = UIColor(named: "primary")
+        l.font = UIFont.preferredFont(forTextStyle: .title3).bold()
         l.numberOfLines = 0
         l.textAlignment = .right
         l.allowsDefaultTighteningForTruncation = true

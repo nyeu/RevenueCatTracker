@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "ScreenBackgroundColor")
         loginView.textFields.forEach({ $0.delegate = self })
         loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
     }
