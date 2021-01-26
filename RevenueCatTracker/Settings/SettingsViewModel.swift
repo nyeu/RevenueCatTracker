@@ -20,9 +20,8 @@ class SettingsViewModel: StoreSubscriber {
     var currentState: SettingsState?
     weak var delegate: SettingsViewModelDelegate?
     typealias StoreSubscriberStateType = SettingsState
-    var data: [TableViewData]!
+    var data: [TableViewData] = []
 
-    
     private func setupData() {
         self.data = [
             TableViewData(section: .Settings, rowData: TableViewRowData(title: "Help & Support", detail: "I appreciate your feedback, ideas and bug reports."), action: sendEmail),
@@ -32,8 +31,11 @@ class SettingsViewModel: StoreSubscriber {
             TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Recommend RC Tracker to a friend", detail: nil), action: recommendToFriend)]
     }
     
-    func subscribe() {
+    init() {
         setupData()
+    }
+    
+    func subscribe() {
         mainStore.subscribe(self, transform: {
             $0.select(SettingsState.init)
         })
