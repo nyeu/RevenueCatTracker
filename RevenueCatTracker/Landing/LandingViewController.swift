@@ -51,6 +51,7 @@ class LandingViewController: UIViewController {
         let tabbar = TabbarViewController()
         let nav = UINavigationController(rootViewController: tabbar)
         nav.setNavigationBarHidden(true, animated: false)
+        nav.navigationBar.tintColor = UIColor(named: "primary")
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
     }
