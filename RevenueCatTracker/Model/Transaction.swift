@@ -32,7 +32,7 @@ struct Transaction: Codable, Equatable {
     let wasRefunded: Bool
     let revenue: Double
     let isSandbox: Bool
-    let expirationDate: String
+    let expirationDate: String?
     let purchasedDate: String
     var tag: TransactionTag {
         guard !isTrial else {

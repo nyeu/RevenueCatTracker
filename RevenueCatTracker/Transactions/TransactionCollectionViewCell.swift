@@ -14,8 +14,6 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     let container: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor(named: "ClearBackgroundColor")
-        v.layer.cornerRadius = 10.0
-        v.layer.masksToBounds = true
         return v
     }()
     

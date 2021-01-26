@@ -117,6 +117,15 @@ extension TransactionDetailViewModel {
             }
         }
         
+        if subscriber.aliases.count > 0 {
+            var aliases = ""
+            for alias in subscriber.aliases {
+                aliases.append(", \(alias)")
+            }
+            attributesArray.append(TableViewData(section: .attributes, rowData: TableViewRowData(title: aliases, detail: "Aliases")))
+        }
+        
+        
         if let subscriberAttributes = subscriber.subscriberAttributes {
             for att in subscriberAttributes {
                 attributesArray.append(TableViewData(section: .attributes, rowData: TableViewRowData(title: att.value.value, detail: att.key)))
