@@ -36,14 +36,41 @@ let fetchOverview = Thunk<MainState> { dispatch, getState in
 
 let fetchTransactions = Thunk<MainState> { dispatch, getState in
     ApiClient().transactions(sandboxMode: getState()?.sandboxMode ?? false) { (transactionResult) in
-        guard let transactions = transactionResult?.transactions else { return }
+        guard let transactionResult = transactionResult else { return }
         DispatchQueue.main.async {
             dispatch(
-                MainStateAction.transactionsFetched(transactions)
+                MainStateAction.transactionsFetched(transactionResult)
             )
         }
     }
 }
+
+let fetchRefreshedTransactions = Thunk<MainState> { dispatch, getState in
+    ApiClient().transactions(sandboxMode: getState()?.sandboxMode ?? false) { (transactionResult) in
+        guard let transactionResult = transactionResult else { return }
+        DispatchQueue.main.async {
+            dispatch(
+                MainStateAction.refreshTransactions(transactionResult)
+            )
+        }
+    }
+}
+
+let fetchMoreTransactions = Thunk<MainState> { dispatch, getState in
+    guard let lastTransactionFetched = getState()?.transactionResults.last, let state = getState() else {
+        return
+    }
+
+    ApiClient().transactions(sandboxMode: getState()?.sandboxMode ?? false, startFrom: String(Int(lastTransactionFetched.lastPurchase))) { (transactionResult) in
+        guard let transactionResult = transactionResult else { return }
+        DispatchQueue.main.async {
+            dispatch(
+                MainStateAction.transactionsFetched(transactionResult)
+            )
+        }
+    }
+}
+
 
 let fetchSubscriber = Thunk<MainState> { dispatch, getState in
     guard let transaction = getState()?.selectedTransaction else {

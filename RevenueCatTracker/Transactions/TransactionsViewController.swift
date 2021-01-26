@@ -103,6 +103,15 @@ extension TransactionsViewController: UICollectionViewDataSource, UICollectionVi
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let transactions = viewModel.currentState?.transactions, transactions.count > 0, viewModel.fetchState == .ready else {
+            return
+        }
+        if indexPath.row >= transactions.count - 3 {
+            viewModel.getMoreTransactions()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let transactions = viewModel.currentState?.transactions else { return }
         let transaction = transactions[indexPath.row]
@@ -112,7 +121,7 @@ extension TransactionsViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     @objc func refreshData() {
-        viewModel.getTransactions()
+        viewModel.refreshTransactions()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.refresher.endRefreshing()
         }

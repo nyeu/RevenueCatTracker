@@ -61,6 +61,7 @@
 		4ECD9DCF25BF3E55005525F3 /* SubscriberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DCE25BF3E55005525F3 /* SubscriberTests.swift */; };
 		4ECD9DD425BF3EF0005525F3 /* SubscriberData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */; };
 		4ECD9DDD25C01686005525F3 /* UIFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DDC25C01686005525F3 /* UIFont+Traits.swift */; };
+		4ECD9DE325C0322F005525F3 /* TransactionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DE225C0322F005525F3 /* TransactionViewModelTests.swift */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -147,6 +148,7 @@
 		4ECD9DCE25BF3E55005525F3 /* SubscriberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberTests.swift; sourceTree = "<group>"; };
 		4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SubscriberData.json; sourceTree = "<group>"; };
 		4ECD9DDC25C01686005525F3 /* UIFont+Traits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Traits.swift"; sourceTree = "<group>"; };
+		4ECD9DE225C0322F005525F3 /* TransactionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModelTests.swift; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		4E55AF4425BD7F8100BCE0F8 /* RevenueCatTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD9DE125C03222005525F3 /* Transaction */,
 				4ECD9DC225BF37C5005525F3 /* TransactionDetail */,
 				4ECD9D8A25BF176F005525F3 /* Services */,
 				4ECD9D7325BF0C15005525F3 /* Settings */,
@@ -433,6 +436,14 @@
 				4ECD9DDC25C01686005525F3 /* UIFont+Traits.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		4ECD9DE125C03222005525F3 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD9DE225C0322F005525F3 /* TransactionViewModelTests.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		A51681C21C73018D395C9F74 /* Frameworks */ = {
@@ -771,6 +782,7 @@
 				4ECD9D7525BF0C24005525F3 /* SettingsViewModelTests.swift in Sources */,
 				4ECD9DC425BF37DE005525F3 /* TransactionDetailViewModelTests.swift in Sources */,
 				4ECD9D9425BF17A0005525F3 /* TimeServiceTests.swift in Sources */,
+				4ECD9DE325C0322F005525F3 /* TransactionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

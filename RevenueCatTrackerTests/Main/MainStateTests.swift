@@ -211,6 +211,85 @@ class MainStateTests: XCTestCase {
         XCTAssertEqual(state.subscriber, subscriber)
     }
     
+    func testTransactionResult() {
+        let transaction = Transaction(app: App(name: "app", id: "123"),
+                                      isTrial: false,
+                                      productIdentifier: "id",
+                                      subscriberId: "ids",
+                                      isTrialConversion: false,
+                                      isRenewal: false,
+                                      wasRefunded: false,
+                                      revenue: 15.0,
+                                      isSandbox: false,
+                                      expirationDate: "2021-01-28T06:33:43Z",
+                                      purchasedDate: "2021-01-28T06:33:43Z")
+        
+        let transactionResult1 = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transaction])
+        let action = MainStateAction.transactionsFetched(transactionResult1)
+        let state = mainReducer(action: action, state: nil)
+        
+        XCTAssertEqual(state.transactionResults, [transactionResult1])
+    }
+    
+    func testAppendTransactionResult() {
+        let transaction = Transaction(app: App(name: "app", id: "123"),
+                                      isTrial: false,
+                                      productIdentifier: "id",
+                                      subscriberId: "ids",
+                                      isTrialConversion: false,
+                                      isRenewal: false,
+                                      wasRefunded: false,
+                                      revenue: 15.0,
+                                      isSandbox: false,
+                                      expirationDate: "2021-01-28T06:33:43Z",
+                                      purchasedDate: "2021-01-28T06:33:43Z")
+        
+        let transactionResult1 = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transaction])
+        let action = MainStateAction.transactionsFetched(transactionResult1)
+        let state = mainReducer(action: action, state: nil)
+        
+        let transactionResult2 = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transaction, transaction])
+        let action2 = MainStateAction.transactionsFetched(transactionResult2)
+        let newState = mainReducer(action: action2, state: state)
+
+        
+        XCTAssertEqual(newState.transactions.count, 3)
+    }
+    
+    func testRefreshTransactionsSubstitutesOldTransactions() {
+        let transaction = Transaction(app: App(name: "app", id: "123"),
+                                      isTrial: false,
+                                      productIdentifier: "id",
+                                      subscriberId: "ids",
+                                      isTrialConversion: false,
+                                      isRenewal: false,
+                                      wasRefunded: false,
+                                      revenue: 15.0,
+                                      isSandbox: false,
+                                      expirationDate: "2021-01-28T06:33:43Z",
+                                      purchasedDate: "2021-01-28T06:33:43Z")
+        
+        // Add first Batch of transactions
+        let transactionResult1 = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transaction])
+        let action = MainStateAction.transactionsFetched(transactionResult1)
+        let state = mainReducer(action: action, state: nil)
+        
+        // Append new transactions
+        let transactionResult2 = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transaction, transaction])
+        let action2 = MainStateAction.transactionsFetched(transactionResult2)
+        let newState = mainReducer(action: action2, state: state)
+
+        // Refresh will substitute all previous transactions with a new batch of the latest only
+        let transactionResultRefreshed = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transaction])
+        let actionRefresh = MainStateAction.refreshTransactions(transactionResultRefreshed)
+        let newRefreshedState = mainReducer(action: actionRefresh, state: newState)
+
+        
+        XCTAssertEqual(newRefreshedState.transactionResults, [transactionResultRefreshed])
+        XCTAssertEqual(newRefreshedState.transactions, transactionResultRefreshed.transactions)
+    }
+    
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

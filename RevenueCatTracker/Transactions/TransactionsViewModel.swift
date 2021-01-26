@@ -13,10 +13,16 @@ protocol TransactionsViewModelDelegate: class {
 }
 
 class TransactionsViewModel: StoreSubscriber {
+    enum FetchState: Equatable {
+        case ready
+        case fetching
+    }
+    
     weak var delegate: TransactionsViewModelDelegate?
     var currentState: TransactionState?
     typealias StoreSubscriberStateType = TransactionState
     let timeService: TimeService
+    var fetchState: FetchState = .ready
     
     init(timeService: TimeService) {
         self.timeService = timeService
@@ -35,15 +41,30 @@ class TransactionsViewModel: StoreSubscriber {
     func newState(state: TransactionState) {
         let oldState = self.currentState
         self.currentState = state
-        if oldState?.sandboxMode != state.sandboxMode {
+        
+        if let oldStateSandbox = oldState?.sandboxMode, oldStateSandbox != state.sandboxMode {
             getTransactions()
+        }
+        if fetchState == .fetching && oldState?.transactions != state.transactions {
+            fetchState = .ready
         }
 
         delegate?.updateView(newState: state, oldState: oldState)
     }
     
     func getTransactions() {
+        fetchState = .fetching
         mainStore.dispatch(fetchTransactions)
+    }
+    
+    func refreshTransactions() {
+        fetchState = .fetching
+        mainStore.dispatch(fetchRefreshedTransactions)
+    }
+    
+    func getMoreTransactions() {
+        fetchState = .fetching
+        mainStore.dispatch(fetchMoreTransactions)
     }
     
     func radableDate(date: String) -> String? {

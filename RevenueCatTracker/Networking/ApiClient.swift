@@ -15,7 +15,7 @@ enum Result<T: Codable & Equatable>: Equatable {
 protocol RevenueCatFetcher {
     func login(credentials: Credentials, completion: @escaping (Auth?) -> Void)
     func overview(sandboxMode: Bool, completion: @escaping (Overview?) -> Void)
-    func transactions(sandboxMode: Bool, completion: @escaping (TransactionResult?) -> Void)
+    func transactions(sandboxMode: Bool, startFrom: String?, completion: @escaping (TransactionResult?) -> Void)
     func subscriber(sandboxMode: Bool, appId: String, subscriberId: String, completion: @escaping (SubscriberResponse?) -> Void)
 }
 
@@ -46,26 +46,29 @@ class ApiClient: RevenueCatFetcher {
         ]
         
         guard let validURL = urlComponents?.url else { return completion(nil) }
-
+        
         fetch(url: validURL, completion: completion)
     }
     
-    func transactions(sandboxMode: Bool, completion: @escaping (TransactionResult?) -> Void) {
+    func transactions(sandboxMode: Bool, startFrom: String? = nil, completion: @escaping (TransactionResult?) -> Void) {
         let url = "\(baseUrl)/me/transactions"
         var urlComponents = URLComponents(string: url)
-        urlComponents?.queryItems = [
-            URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false")
-        ]
+        
+        urlComponents?.queryItems = {
+            guard let startFrom = startFrom else {
+                return [URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false")]
+            }
+            return [URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false"),
+                    URLQueryItem(name: "start_from", value: startFrom)]
+        }()
+        
         guard let validURL = urlComponents?.url else { return completion(nil) }
         fetch(url: validURL, completion: completion)
     }
     
     func subscriber(sandboxMode: Bool, appId: String, subscriberId: String, completion: @escaping (SubscriberResponse?) -> Void) {
         let url = "\(baseUrl)/me/apps/\(appId)/subscribers/\(subscriberId)"
-        var urlComponents = URLComponents(string: url)
-//        urlComponents?.queryItems = [
-//            URLQueryItem(name: "sandbox_mode", value: sandboxMode ? "true" : "false")
-//        ]
+        let urlComponents = URLComponents(string: url)
         guard let validURL = urlComponents?.url else { return completion(nil) }
         fetch(url: validURL, completion: completion)
     }
@@ -73,7 +76,6 @@ class ApiClient: RevenueCatFetcher {
     func fetch<T: Codable>(url: URL, completion: @escaping (T?) -> Void) {
         var request = urlRequestWithBasicHeaders(url: url)
         request.httpMethod = "GET"
-        
                 
         let task = URLSession.shared.dataTask(with: request) { data, _, _ in
             guard

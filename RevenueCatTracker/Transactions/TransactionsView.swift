@@ -47,7 +47,7 @@ class TransactionsView: UIView {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {() -> UICollectionViewFlowLayout in
         let viewFlowLayout = UICollectionViewFlowLayout()
-        viewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        viewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         viewFlowLayout.minimumLineSpacing = 20
         viewFlowLayout.minimumInteritemSpacing = 10.0
         viewFlowLayout.scrollDirection = .vertical

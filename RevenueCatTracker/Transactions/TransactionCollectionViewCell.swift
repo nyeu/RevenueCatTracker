@@ -43,7 +43,7 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     
     private lazy var appNameLabel: UILabel = {
         let l = UILabel()
-        l.textColor = UIColor(named: "primaryText")
+        l.textColor = UIColor(named: "Navy")
         l.font = UIFont.preferredFont(forTextStyle: .title2)
         l.numberOfLines = 0
         l.textAlignment = .left
