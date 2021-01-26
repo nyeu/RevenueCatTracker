@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import ReSwift
 import SnapKit
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
     fileprivate let viewModel: LoginViewModel
@@ -50,6 +51,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginTapped() {
+        SVProgressHUD.show()
         mainStore.dispatch(loginRevenueCat)
     }
     
@@ -73,12 +75,13 @@ extension LoginViewController: StoreSubscriber {
         if state.auth != viewModel.currentState?.auth, let auth = state.auth {
             switch auth {
             case .success(let a):
+                SVProgressHUD.dismiss()
                 viewModel.persistAuth(a)
                 DispatchQueue.main.async {
                     self.navigateToDashboard()
                 }
             case .error:
-                // error
+                SVProgressHUD.showError(withStatus: "Error")
                 break
             }
         }

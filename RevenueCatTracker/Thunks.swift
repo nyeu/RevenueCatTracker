@@ -13,6 +13,11 @@ let loginRevenueCat = Thunk<MainState> { dispatch, getState in
     guard let credentials = getState()?.credentials else {
         return
     }
+    
+    guard Validator().isValidEmail(credentials.email) else {
+        return
+    }
+    
     ApiClient().login(credentials: credentials) { (auth) in
         guard let auth = auth else { return }
         DispatchQueue.main.async {

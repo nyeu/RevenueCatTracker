@@ -62,6 +62,8 @@
 		4ECD9DD425BF3EF0005525F3 /* SubscriberData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */; };
 		4ECD9DDD25C01686005525F3 /* UIFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DDC25C01686005525F3 /* UIFont+Traits.swift */; };
 		4ECD9DE325C0322F005525F3 /* TransactionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DE225C0322F005525F3 /* TransactionViewModelTests.swift */; };
+		4ECD9DF825C0366F005525F3 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DF725C0366F005525F3 /* Validator.swift */; };
+		4ECD9DFD25C0368D005525F3 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD9DFC25C0368D005525F3 /* ValidatorTests.swift */; };
 		CAB6C417125F514B760B09F4 /* Pods_RevenueCatTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */; };
 		DE4F7A8290A90F5A4B004534 /* Pods_RevenueCatTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */; };
 		F7CE832FB185967B7C8D369B /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A0C5395703A095F68F9D09 /* Pods_RevenueCatTracker_RevenueCatTrackerUITests.framework */; };
@@ -149,6 +151,8 @@
 		4ECD9DD325BF3EF0005525F3 /* SubscriberData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SubscriberData.json; sourceTree = "<group>"; };
 		4ECD9DDC25C01686005525F3 /* UIFont+Traits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Traits.swift"; sourceTree = "<group>"; };
 		4ECD9DE225C0322F005525F3 /* TransactionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModelTests.swift; sourceTree = "<group>"; };
+		4ECD9DF725C0366F005525F3 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		4ECD9DFC25C0368D005525F3 /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		90E54427CDF49D4B3A24EC58 /* Pods_RevenueCatTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B5FA7DF4D13D5D5933ECF6 /* Pods_RevenueCatTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1677EFC813357B03C2175E8 /* Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatTracker-RevenueCatTrackerUITests/Pods-RevenueCatTracker-RevenueCatTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				4ECD9CFE25BEC596005525F3 /* Model */,
 				4E55AF4525BD7F8100BCE0F8 /* RevenueCatTrackerTests.swift */,
 				4E55AF4725BD7F8100BCE0F8 /* Info.plist */,
+				4ECD9DFC25C0368D005525F3 /* ValidatorTests.swift */,
 			);
 			path = RevenueCatTrackerTests;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				4ECD9DDC25C01686005525F3 /* UIFont+Traits.swift */,
+				4ECD9DF725C0366F005525F3 /* Validator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -739,6 +745,7 @@
 				4ECD9D3825BEDBD7005525F3 /* TransactionsView.swift in Sources */,
 				4E55AF3325BD7F7A00BCE0F8 /* ViewController.swift in Sources */,
 				4ECD9CD225BDD4F4005525F3 /* Overview.swift in Sources */,
+				4ECD9DF825C0366F005525F3 /* Validator.swift in Sources */,
 				4ECD9D6525BF0591005525F3 /* SettingsViewController.swift in Sources */,
 				4ECD9D5B25BEF20A005525F3 /* TabbarViewController.swift in Sources */,
 				4E55AFAA25BD8A4300BCE0F8 /* Auth.swift in Sources */,
@@ -775,6 +782,7 @@
 				4ECD9D0025BEC5A1005525F3 /* OverviewTest.swift in Sources */,
 				4ECD9D2025BEC993005525F3 /* LandingViewModelTests.swift in Sources */,
 				4ECD9C9D25BDD1A3005525F3 /* ThunksTests.swift in Sources */,
+				4ECD9DFD25C0368D005525F3 /* ValidatorTests.swift in Sources */,
 				4ECD9D4A25BEEE02005525F3 /* TransactionTests.swift in Sources */,
 				4E55B00125BDA7DB00BCE0F8 /* MainStateTests.swift in Sources */,
 				4ECD9DCF25BF3E55005525F3 /* SubscriberTests.swift in Sources */,

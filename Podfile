@@ -9,6 +9,7 @@ target 'RevenueCatTracker' do
   pod 'ReSwiftThunk'
   pod 'SnapKit'
   pod 'IQKeyboardManagerSwift'
+  pod 'SVProgressHUD'
   
   target 'RevenueCatTrackerTests' do
     inherit! :search_paths
