@@ -51,6 +51,9 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginTapped() {
+        guard let credentials = viewModel.currentState?.credentials, viewModel.validateCredentials(credentials) else {
+            return
+        }
         SVProgressHUD.show()
         mainStore.dispatch(loginRevenueCat)
     }
@@ -80,9 +83,10 @@ extension LoginViewController: StoreSubscriber {
                 DispatchQueue.main.async {
                     self.navigateToDashboard()
                 }
-            case .error:
-                SVProgressHUD.showError(withStatus: "Error")
-                break
+            case .error(let error):
+                if let e = error {
+                    SVProgressHUD.showError(withStatus: e)
+                }
             }
         }
         

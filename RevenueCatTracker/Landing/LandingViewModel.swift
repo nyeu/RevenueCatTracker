@@ -16,10 +16,10 @@ class LandingViewModel {
             if let auth = try? decoder.decode(Auth.self, from: authObject) {
                 mainStore.dispatch(MainStateAction.auth(Result.success(auth)))
             } else {
-                mainStore.dispatch(MainStateAction.auth(Result.error))
+                mainStore.dispatch(MainStateAction.auth(Result.error(nil)))
             }
         } else {
-            mainStore.dispatch(MainStateAction.auth(Result.error))
+            mainStore.dispatch(MainStateAction.auth(Result.error(nil)))
         }
     }
 }

@@ -49,7 +49,7 @@ class LandingViewController: UIViewController {
     }
     
     func navigateToLogin() {
-        let logingVC = LoginViewController(viewModel: LoginViewModel())
+        let logingVC = LoginViewController(viewModel: LoginViewModel(validator: Validator()))
         logingVC.modalPresentationStyle = .fullScreen
         present(logingVC, animated: true, completion: nil)
     }

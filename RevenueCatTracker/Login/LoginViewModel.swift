@@ -10,6 +10,11 @@ import ReSwift
 
 class LoginViewModel {
     var currentState: LoginState?
+    let validator: Validator
+    
+    init(validator: Validator) {
+        self.validator = validator
+    }
     
     func persistAuth(_ auth: Auth) {
         let encoder = JSONEncoder()
@@ -17,6 +22,10 @@ class LoginViewModel {
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: Auth.persistedKey)
         }
+    }
+    
+    func validateCredentials(_ credentials: Credentials) -> Bool {
+        return credentials.password.count > 0 && validator.isValidEmail(credentials.email)
     }
 }
 

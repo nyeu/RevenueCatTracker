@@ -9,7 +9,7 @@ import Foundation
 
 enum Result<T: Codable & Equatable>: Equatable {
   case success(T)
-  case error
+  case error(String?)
 }
 
 protocol RevenueCatFetcher {

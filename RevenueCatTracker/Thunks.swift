@@ -19,7 +19,14 @@ let loginRevenueCat = Thunk<MainState> { dispatch, getState in
     }
     
     ApiClient().login(credentials: credentials) { (auth) in
-        guard let auth = auth else { return }
+        guard let auth = auth else {
+            DispatchQueue.main.async {
+                dispatch(
+                    MainStateAction.auth(Result.error("Error logging in"))
+                )
+            }
+            return
+        }
         DispatchQueue.main.async {
             dispatch(
                 MainStateAction.auth(Result.success(auth))
