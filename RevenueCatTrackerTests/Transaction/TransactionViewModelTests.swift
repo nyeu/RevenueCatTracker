@@ -92,6 +92,46 @@ class TransactionViewModelTests: XCTestCase {
         viewModel.newState(state: transactionState)
         XCTAssertEqual(viewModel.fetchState, .ready)
     }
+    
+    func testFilterFiltersTransactionArray() {
+        let viewModel = TransactionsViewModel(timeService: TimeService())
+        let appIdToFilter = "1"
+        let transactionWithAppIdToFilter = Transaction(app: App(name: "app1", id: appIdToFilter),
+                                      isTrial: false,
+                                      productIdentifier: "id",
+                                      subscriberId: "ids",
+                                      isTrialConversion: false,
+                                      isRenewal: false,
+                                      wasRefunded: false,
+                                      revenue: 15.0,
+                                      isSandbox: false,
+                                      expirationDate: "2021-01-28T06:33:43Z",
+                                      purchasedDate: "2021-01-28T06:33:43Z")
+        
+        let transactionWithDifferentAppIdToFilter = Transaction(app: App(name: "app2", id: "2"),
+                                      isTrial: false,
+                                      productIdentifier: "id",
+                                      subscriberId: "ids",
+                                      isTrialConversion: false,
+                                      isRenewal: false,
+                                      wasRefunded: false,
+                                      revenue: 15.0,
+                                      isSandbox: false,
+                                      expirationDate: "2021-01-28T06:33:43Z",
+                                      purchasedDate: "2021-01-28T06:33:43Z")
+        
+        let transactionResult = TransactionResult(firstPurchase: 1000200, lastPurchase: 20003000, transactions: [transactionWithAppIdToFilter, transactionWithDifferentAppIdToFilter])
+        let action = MainStateAction.transactionsFetched(transactionResult)
+        let state = mainReducer(action: action, state: nil)
+        let filter = Filter.app(appIdToFilter)
+        
+        let actionFilter = MainStateAction.updateTransactionFilter(filter)
+        let stateAfterFilter = mainReducer(action: actionFilter, state: state)
+        viewModel.newState(state: TransactionsViewModel.TransactionState.init(stateAfterFilter))
+
+        XCTAssertEqual(viewModel.currentState?.transactions?.count, 1)
+        XCTAssertEqual(viewModel.currentState?.transactions, [transactionWithAppIdToFilter])
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

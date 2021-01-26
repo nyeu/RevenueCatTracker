@@ -38,6 +38,13 @@ class ApiClient: RevenueCatFetcher {
         post(url: "\(baseUrl)/login", params: jsonData, completion: completion)
     }
     
+    func apps(completion: @escaping (AppsResponse?) -> Void) {
+        let url = "\(baseUrl)/me"
+        let urlComponents = URLComponents(string: url)
+        guard let validURL = urlComponents?.url else { return completion(nil) }
+        fetch(url: validURL, completion: completion)
+    }
+    
     func overview(sandboxMode: Bool, completion: @escaping (Overview?) -> Void) {
         let url = "\(baseUrl)/me/overview"
         var urlComponents = URLComponents(string: url)

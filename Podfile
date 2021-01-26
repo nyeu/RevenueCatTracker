@@ -10,7 +10,8 @@ target 'RevenueCatTracker' do
   pod 'SnapKit'
   pod 'IQKeyboardManagerSwift'
   pod 'SVProgressHUD'
-  
+  pod "PickerButton"
+
   target 'RevenueCatTrackerTests' do
     inherit! :search_paths
     pod 'ReSwiftThunk/ExpectThunk'

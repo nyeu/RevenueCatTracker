@@ -67,8 +67,20 @@ class TransactionsViewModel: StoreSubscriber {
         mainStore.dispatch(fetchMoreTransactions)
     }
     
+    func getApps() {
+        mainStore.dispatch(fetchApps)
+    }
+    
     func radableDate(date: String) -> String? {
         return(timeService.readableDate(fromDate: date, toDate: timeService.now()))
+    }
+    
+    func filterByApp(_ app: App?) {
+        guard let app = app else {
+            mainStore.dispatch(MainStateAction.updateTransactionFilter(.none))
+            return
+        }
+        mainStore.dispatch(MainStateAction.updateTransactionFilter(Filter.app(app.id)))
     }
 }
 
@@ -76,10 +88,25 @@ extension TransactionsViewModel {
     struct TransactionState: Equatable {
         var transactions: [Transaction]?
         var sandboxMode: Bool
+        var apps: [App]
+        var filter: Filter
 
         init(_ state: MainState) {
-            transactions = state.transactions
             sandboxMode = state.sandboxMode
+            apps = state.apps
+            filter = state.transactionFilter
+            
+            switch filter {
+            case .none:
+                transactions = state.transactions
+            case .app(let appId):
+                transactions = state.transactions.filter({ $0.app.id == appId})
+            }
         }
     }
+}
+
+enum Filter: Equatable {
+    case none
+    case app(String)
 }

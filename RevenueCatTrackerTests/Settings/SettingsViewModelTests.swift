@@ -21,20 +21,22 @@ class SettingsViewModelTests: XCTestCase {
     func testRowsForSettingsSection() {
         let viewModel = SettingsViewModel()
         let data: [SettingsViewModel.TableViewData] = [
-            SettingsViewModel.TableViewData(section: .Settings, rowData: SettingsViewModel.TableViewRowData(title: "Feedback", detail: "I appreciate your feedback, ideas and bug reports.")),
-            SettingsViewModel.TableViewData(section: .ShowSupport, rowData: SettingsViewModel.TableViewRowData(title: "Tip Jar", detail: "I appreciate your support"))]
+            SettingsViewModel.TableViewData(section: .Settings, rowData: SettingsViewModel.TableViewRowData(title: "Feedback", detail: "I appreciate your feedback, ideas and bug reports."), action: dummyFunc),
+            SettingsViewModel.TableViewData(section: .ShowSupport, rowData: SettingsViewModel.TableViewRowData(title: "Tip Jar", detail: "I appreciate your support"), action: dummyFunc)]
         
         let rowsForSettingsSection = viewModel.rowsPerSection(.Settings, for: data)
         
         XCTAssertEqual(rowsForSettingsSection.count, 1)
     }
     
+    func dummyFunc() {}
+    
     func testRowsForAboutMeSection() {
         let viewModel = SettingsViewModel()
         let data: [SettingsViewModel.TableViewData] = [
-            SettingsViewModel.TableViewData(section: .Settings, rowData: SettingsViewModel.TableViewRowData(title: "Feedback", detail: "I appreciate your feedback, ideas and bug reports.")),
-            SettingsViewModel.TableViewData(section: .ShowSupport, rowData: SettingsViewModel.TableViewRowData(title: "Tip Jar", detail: "I appreciate your support")),
-            SettingsViewModel.TableViewData(section: .ShowSupport, rowData: SettingsViewModel.TableViewRowData(title: "Know me", detail: nil))]
+            SettingsViewModel.TableViewData(section: .Settings, rowData: SettingsViewModel.TableViewRowData(title: "Feedback", detail: "I appreciate your feedback, ideas and bug reports."), action: dummyFunc),
+            SettingsViewModel.TableViewData(section: .ShowSupport, rowData: SettingsViewModel.TableViewRowData(title: "Tip Jar", detail: "I appreciate your support"), action: dummyFunc),
+            SettingsViewModel.TableViewData(section: .ShowSupport, rowData: SettingsViewModel.TableViewRowData(title: "Know me", detail: nil), action: dummyFunc)]
         
         let rowsForSettingsSection = viewModel.rowsPerSection(.ShowSupport, for: data)
         

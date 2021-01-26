@@ -96,7 +96,6 @@ class MainStateTests: XCTestCase {
         XCTAssertEqual(state.sandboxMode, false)
     }
     
-    
     func testSelectedTransaction() {
        let transaction = Transaction(app: App(name: "app", id: "123"),
                                      isTrial: false,
@@ -289,6 +288,32 @@ class MainStateTests: XCTestCase {
         XCTAssertEqual(newRefreshedState.transactions, transactionResultRefreshed.transactions)
     }
     
+    func testFilterAtInitHasToBeNone() {
+        let filter = Filter.none
+        let store = makeStore()
+        
+        XCTAssertEqual(store.state.transactionFilter, filter)
+    }
+    
+    func testSetFilterWithApp() {
+        let app = App(name: "My app",
+                      id: "appId")
+        let filter = Filter.app(app.id)
+        let action = MainStateAction.updateTransactionFilter(filter)
+        
+        let state = mainReducer(action: action, state: nil)
+        
+        XCTAssertEqual(state.transactionFilter, filter)
+    }
+    
+    func testSetFilterWithNone() {
+        let filter = Filter.none
+        let action = MainStateAction.updateTransactionFilter(filter)
+        
+        let state = mainReducer(action: action, state: nil)
+        
+        XCTAssertEqual(state.transactionFilter, filter)
+    }
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

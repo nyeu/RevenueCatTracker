@@ -176,6 +176,7 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PickerButton/PickerButton.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReSwiftThunk/ReSwiftThunk.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
@@ -183,6 +184,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PickerButton/PickerButton.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReSwiftThunk/ReSwiftThunk.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"

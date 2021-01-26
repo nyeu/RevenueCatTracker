@@ -98,3 +98,16 @@ let fetchSubscriber = Thunk<MainState> { dispatch, getState in
     }
 }
 
+
+let fetchApps = Thunk<MainState> { dispatch, getState in
+    ApiClient().apps() { (apps) in
+        guard let apps = apps else { return }
+        DispatchQueue.main.async {
+            dispatch(
+                MainStateAction.appsFetched(apps)
+            )
+        }
+    }
+}
+
+

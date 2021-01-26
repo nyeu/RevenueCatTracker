@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct AppsResponse: Codable, Equatable {
+    let apps: [App]
+}
+
 struct App: Codable, Equatable {
     let name: String
     let id: String

@@ -18,6 +18,8 @@ struct MainState: StateType, Equatable {
     var selectedTransaction: Transaction?
     var sandboxMode: Bool = false
     var subscriber: Subscriber?
+    var transactionFilter: Filter = .none
+    var apps: [App] = []
 }
 
 func mainReducer(action: Action, state: MainState?) -> MainState {
@@ -46,6 +48,10 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
         state.selectedTransaction = transaction
     case .updateSubscriber(let subscriber):
         state.subscriber = subscriber
+    case .updateTransactionFilter(let filter):
+        state.transactionFilter = filter
+    case .appsFetched(let appsResponse):
+        state.apps = appsResponse.apps
     }
 
     return state
@@ -60,6 +66,8 @@ enum MainStateAction: Action {
     case changeSandboxMode(Bool)
     case selectTransaction(Transaction?)
     case updateSubscriber(Subscriber?)
+    case updateTransactionFilter(Filter)
+    case appsFetched(AppsResponse)
 }
 
 let thunksMiddleware: Middleware<MainState> = createThunkMiddleware()

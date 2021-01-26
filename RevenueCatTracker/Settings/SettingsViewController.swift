@@ -56,7 +56,7 @@ extension SettingsViewController: SettingsViewModelDelegate {
     
     func recommendToFriend() {
         let textToShare = "I found this beautiful RevenueCat client and I thought you would be interested too"
-        if let myWebsite = NSURL(string: "https://apps.apple.com/us/app/mindful-affirmations/id1473019675") {
+        if let myWebsite = NSURL(string: "https://apps.apple.com/us/app/revenuecat-tracker/id1550512502") {
             let objectsToShare: [Any] = [textToShare, myWebsite]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
@@ -81,12 +81,11 @@ extension SettingsViewController: SettingsViewModelDelegate {
     }
     
     func openForReview() {
-        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1473019675?action=write-review"),
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1550512502?action=write-review"),
            UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    
 }
 
 // MARK: Tableview
@@ -116,6 +115,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let data = viewModel.rowsPerSection(sectionCase, for: viewModel.data)[indexPath.row]
         cell.textLabel?.text = data.rowData.title
         cell.detailTextLabel?.text = data.rowData.detail
+        cell.detailTextLabel?.numberOfLines = 0
         cell.accessoryType = .disclosureIndicator
         return cell
     }

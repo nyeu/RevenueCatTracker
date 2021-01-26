@@ -34,6 +34,7 @@ class TransactionsViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.subscribe()
         viewModel.getTransactions()
+        viewModel.getApps()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,6 +46,10 @@ class TransactionsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "ScreenBackgroundColor")
         viewModel.delegate = self
+        transactionView.filterButton.dataSource = self
+        transactionView.filterButton.delegate = self
+        transactionView.filterButton.setTitle("Filter", for: .normal)
+        transactionView.searchButton.addTarget(self, action: #selector(comingSoon), for: .touchUpInside)
         setupCollectionView()
         transactionView.sandboxSwitch.addTarget(self, action: #selector(sandboxSelected), for: .valueChanged)
     }
@@ -52,12 +57,22 @@ class TransactionsViewController: UIViewController {
     @objc func sandboxSelected() {
         mainStore.dispatch(MainStateAction.changeSandboxMode(transactionView.sandboxSwitch.isOn))
     }
+    
+    @objc func comingSoon() {
+        let alert = UIAlertController(title: "Coming soon!", message: "This is not yet developed. We are working on it so be sure to check it in the next version", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: StoreSubscriber
 extension TransactionsViewController: TransactionsViewModelDelegate {
     func updateView(newState: TransactionsViewModel.TransactionState, oldState: TransactionsViewModel.TransactionState?) {
         transactionView.collectionView.reloadData()
+        transactionView.filterButton.isEnabled = newState.apps.count > 0
+        transactionView.searchButton.isEnabled = newState.apps.count > 0
     }
 }
 
@@ -128,3 +143,33 @@ extension TransactionsViewController: UICollectionViewDataSource, UICollectionVi
     }
 }
 
+// MARK: Picker
+extension TransactionsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return (viewModel.currentState?.apps.count ?? 0) + 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard row > 0 else {
+            return "No Filter"
+        }
+        let app = viewModel.currentState?.apps[row - 1]
+        return app?.name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard row > 0 else {
+            transactionView.filterButton.setTitle("Filter", for: .normal)
+            viewModel.filterByApp(nil)
+            return
+        }
+        guard let app = viewModel.currentState?.apps[row - 1] else {
+            return
+        }
+        viewModel.filterByApp(app)
+    }
+}
