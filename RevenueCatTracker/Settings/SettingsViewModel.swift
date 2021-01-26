@@ -10,20 +10,30 @@ import ReSwift
 
 protocol SettingsViewModelDelegate: class {
     func updateView(newState: SettingsViewModel.SettingsState, oldState: SettingsViewModel.SettingsState?)
+    func sendEmail()
+    func openForReview()
+    func recommendToFriend()
+    func prettifyTransactions()
 }
 
 class SettingsViewModel: StoreSubscriber {
     var currentState: SettingsState?
     weak var delegate: SettingsViewModelDelegate?
     typealias StoreSubscriberStateType = SettingsState
-    let data: [TableViewData] = [
-                                TableViewData(section: .Settings, rowData: TableViewRowData(title: "Help & Support", detail: "I appreciate your feedback, ideas and bug reports.")),
-                                TableViewData(section: .Settings, rowData: TableViewRowData(title: "Prettify transactions screen", detail: "Removes the noise of identifier prefixes.")),
-                                 TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Tip Jar", detail: "I appreciate your support")),
-                                TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Rate RC Tracker in the App Store", detail: nil)),
-                                TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Recommend RC Tracker to a friend", detail: nil))]
+    var data: [TableViewData]!
+
+    
+    private func setupData() {
+        self.data = [
+            TableViewData(section: .Settings, rowData: TableViewRowData(title: "Help & Support", detail: "I appreciate your feedback, ideas and bug reports."), action: sendEmail),
+            TableViewData(section: .Settings, rowData: TableViewRowData(title: "Prettify transactions screen", detail: "Removes the noise of identifier prefixes."), action: prettifyTransactions),
+            TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Tip Jar", detail: "I appreciate your support, you make this app possible."), action: sendEmail),
+            TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Rate RC Tracker in the App Store", detail: nil), action: openForReview),
+            TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Recommend RC Tracker to a friend", detail: nil), action: recommendToFriend)]
+    }
     
     func subscribe() {
+        setupData()
         mainStore.subscribe(self, transform: {
             $0.select(SettingsState.init)
         })
@@ -63,10 +73,27 @@ extension SettingsViewModel {
     struct TableViewData {
         let section: Section
         let rowData: TableViewRowData
+        let action: () -> ()
     }
 
     struct TableViewRowData {
         let title: String
         let detail: String?
+    }
+    
+    func sendEmail() {
+        delegate?.sendEmail()
+    }
+    
+    func openForReview() {
+        delegate?.openForReview()
+    }
+    
+    func recommendToFriend() {
+        delegate?.recommendToFriend()
+    }
+    
+    func prettifyTransactions() {
+        delegate?.prettifyTransactions()
     }
 }

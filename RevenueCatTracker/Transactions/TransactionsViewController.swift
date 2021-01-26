@@ -97,7 +97,7 @@ extension TransactionsViewController: UICollectionViewDataSource, UICollectionVi
         if let tExpiration = transaction.expirationDate, let expirationDate = viewModel.radableDate(date: tExpiration) {
             cell.expiration = "Expires \(expirationDate)"
         } else {
-            cell.expiration = nil
+            cell.expiration = "Don't expire"
         }
         
         return cell
