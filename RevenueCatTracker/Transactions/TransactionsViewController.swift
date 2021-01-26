@@ -50,6 +50,7 @@ class TransactionsViewController: UIViewController {
         transactionView.filterButton.delegate = self
         transactionView.filterButton.setTitle("Filter", for: .normal)
         transactionView.searchButton.addTarget(self, action: #selector(comingSoon), for: .touchUpInside)
+
         setupCollectionView()
         transactionView.sandboxSwitch.addTarget(self, action: #selector(sandboxSelected), for: .valueChanged)
     }

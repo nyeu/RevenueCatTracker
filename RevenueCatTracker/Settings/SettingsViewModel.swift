@@ -14,6 +14,7 @@ protocol SettingsViewModelDelegate: class {
     func openForReview()
     func recommendToFriend()
     func prettifyTransactions()
+    func navigateToTipJar()
 }
 
 class SettingsViewModel: StoreSubscriber {
@@ -26,7 +27,7 @@ class SettingsViewModel: StoreSubscriber {
         self.data = [
             TableViewData(section: .Settings, rowData: TableViewRowData(title: "Help & Support", detail: "I appreciate your feedback, ideas and bug reports."), action: sendEmail),
             TableViewData(section: .Settings, rowData: TableViewRowData(title: "Prettify transactions screen", detail: "Removes the noise of identifier prefixes."), action: prettifyTransactions),
-            TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Tip Jar", detail: "I appreciate your support, you make this app possible."), action: sendEmail),
+            TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Tip Jar", detail: "I appreciate your support, you make this app possible."), action: navigateToTipJar),
             TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Rate RC Tracker in the App Store", detail: nil), action: openForReview),
             TableViewData(section: .ShowSupport, rowData: TableViewRowData(title: "Recommend RC Tracker to a friend", detail: nil), action: recommendToFriend)]
     }
@@ -97,5 +98,9 @@ extension SettingsViewModel {
     
     func prettifyTransactions() {
         delegate?.prettifyTransactions()
+    }
+    
+    func navigateToTipJar() {
+        delegate?.navigateToTipJar()
     }
 }

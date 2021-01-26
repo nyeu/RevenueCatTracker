@@ -73,11 +73,7 @@ extension SettingsViewController: SettingsViewModelDelegate {
     }
     
     func prettifyTransactions() {
-        let alert = UIAlertController(title: "Coming soon!", message: "This is not yet developed. We are working on it so be sure to check it in the next version", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
+       showComingSoon()
     }
     
     func openForReview() {
@@ -85,6 +81,18 @@ extension SettingsViewController: SettingsViewModelDelegate {
            UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    func navigateToTipJar() {
+        showComingSoon()
+    }
+    
+    private func showComingSoon() {
+        let alert = UIAlertController(title: "Coming soon!", message: "This is not yet developed. We are working on it so be sure to check it in the next version", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
 

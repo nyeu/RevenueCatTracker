@@ -62,6 +62,7 @@ class TransactionsView: UIView {
         b.layer.borderWidth = 2.0
         b.layer.borderColor = UIColor(named: "Navy")?.cgColor
         b.isEnabled = false
+        b.setTitleColor(UIColor(named: "primaryText"), for: .normal)
         return b
     }()
     
@@ -73,6 +74,7 @@ class TransactionsView: UIView {
         b.layer.borderWidth = 2.0
         b.layer.borderColor = UIColor(named: "Navy")?.cgColor
         b.isEnabled = false
+        b.setTitleColor(UIColor(named: "primaryText"), for: .normal)
         return b
     }()
     

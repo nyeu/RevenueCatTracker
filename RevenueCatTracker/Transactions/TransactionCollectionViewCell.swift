@@ -141,7 +141,6 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         rightStackView.addArrangedSubview(revenueLabel)
         rightStackView.addArrangedSubview(tagLabel)
         rightStackView.addArrangedSubview(expirationLabel)
-
         
         container.snp.makeConstraints { (make) in
             make.center.width.height.equalToSuperview()
@@ -151,7 +150,6 @@ class TransactionCollectionViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
             make.size.equalToSuperview().offset(-32)
         }
-        
     }
     
     required init?(coder: NSCoder) {
