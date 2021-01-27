@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import ReSwift
 
+protocol LandingViewModelDelegate: class {
+    func updateView(oldState: LandingViewModel.LandingState?, newState: LandingViewModel.LandingState)
+}
 class LandingViewModel {
+    weak var delegate: LandingViewModelDelegate?
     var currentState: LandingState?
     
     func retrieveAuth() {
@@ -22,7 +27,29 @@ class LandingViewModel {
             mainStore.dispatch(MainStateAction.auth(Result.error(nil)))
         }
     }
+    
+    func subscribe() {
+        mainStore.subscribe(self, transform: {
+            $0.select(LandingViewModel.LandingState.init)
+        })
+    }
+    
+    func unsubscribe() {
+        mainStore.unsubscribe(self)
+    }
 }
+
+// MARK: StoreSubscriber
+extension LandingViewModel: StoreSubscriber {
+    typealias StoreSubscriberStateType = LandingViewModel.LandingState
+    
+    func newState(state: LandingViewModel.LandingState) {
+        let oldState = self.currentState
+        self.currentState = state
+        delegate?.updateView(oldState: oldState, newState: state)
+    }
+}
+
 
 extension LandingViewModel {
     struct LandingState: Equatable {

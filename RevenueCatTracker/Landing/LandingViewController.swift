@@ -31,19 +31,18 @@ class LandingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        mainStore.subscribe(self, transform: {
-            $0.select(LandingViewModel.LandingState.init)
-        })
+        viewModel.subscribe()
         viewModel.retrieveAuth()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        mainStore.unsubscribe(self)
+        viewModel.unsubscribe()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         view.backgroundColor = UIColor(named: "ScreenBackgroundColor")
     }
     
@@ -63,12 +62,10 @@ class LandingViewController: UIViewController {
     }
 }
 
-// MARK: StoreSubscriber
-extension LandingViewController: StoreSubscriber {
-    typealias StoreSubscriberStateType = LandingViewModel.LandingState
-    
-    func newState(state: LandingViewModel.LandingState) {
-        if viewModel.currentState?.auth == nil && state.auth != nil, let auth = state.auth {
+// MARK: LandingViewModelDelegate
+extension LandingViewController: LandingViewModelDelegate {
+    func updateView(oldState: LandingViewModel.LandingState?, newState: LandingViewModel.LandingState) {
+        if oldState?.auth == nil && newState.auth != nil, let auth = newState.auth {
             DispatchQueue.main.async {
                 switch auth {
                 case .success:
@@ -78,7 +75,5 @@ extension LandingViewController: StoreSubscriber {
                 }
             }
         }
-        
-        viewModel.currentState = state
     }
 }
