@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import ReSwift
 import SnapKit
 import SVProgressHUD
 
@@ -32,20 +31,18 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        mainStore.subscribe(self, transform: {
-            $0.select(LoginViewModel.LoginState.init)
-        })
+        viewModel.subscribe()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        mainStore.unsubscribe(self)
+        viewModel.unsubscribe()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "ScreenBackgroundColor")
+        viewModel.delegate = self
         loginView.textFields.forEach({ $0.delegate = self })
         loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
     }
@@ -68,15 +65,13 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: StoreSubscriber
-extension LoginViewController: StoreSubscriber {
-    typealias StoreSubscriberStateType = LoginViewModel.LoginState
-    
-    func newState(state: LoginViewModel.LoginState) {
-        loginView.emailTextField.text = state.credentials?.email
-        loginView.passwordTextField.text = state.credentials?.password
+// MARK: LoginViewModelDelegate
+extension LoginViewController: LoginViewModelDelegate {
+    func updateView(oldState: LoginViewModel.LoginState?, newState: LoginViewModel.LoginState) {
+        loginView.emailTextField.text = newState.credentials?.email
+        loginView.passwordTextField.text = newState.credentials?.password
         
-        if state.auth != viewModel.currentState?.auth, let auth = state.auth {
+        if newState.auth != oldState?.auth, let auth = newState.auth {
             switch auth {
             case .success(let a):
                 SVProgressHUD.dismiss()
@@ -90,8 +85,6 @@ extension LoginViewController: StoreSubscriber {
                 }
             }
         }
-        
-        viewModel.currentState = state
     }
 }
 

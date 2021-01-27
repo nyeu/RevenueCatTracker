@@ -8,7 +8,11 @@
 import Foundation
 import ReSwift
 
+protocol LoginViewModelDelegate: class {
+    func updateView(oldState: LoginViewModel.LoginState?, newState: LoginViewModel.LoginState)
+}
 class LoginViewModel {
+    weak var delegate: LoginViewModelDelegate?
     var currentState: LoginState?
     let validator: Validator
     
@@ -26,6 +30,27 @@ class LoginViewModel {
     
     func validateCredentials(_ credentials: Credentials) -> Bool {
         return credentials.password.count > 0 && validator.isValidEmail(credentials.email)
+    }
+    
+    func subscribe() {
+        mainStore.subscribe(self, transform: {
+            $0.select(LoginViewModel.LoginState.init)
+        })
+    }
+    
+    func unsubscribe() {
+        mainStore.unsubscribe(self)
+    }
+}
+
+// MARK: StoreSubscriber
+extension LoginViewModel: StoreSubscriber {
+    typealias StoreSubscriberStateType = LoginViewModel.LoginState
+    
+    func newState(state: LoginViewModel.LoginState) {
+        let oldState = self.currentState
+        self.currentState = state
+        delegate?.updateView(oldState: oldState, newState: state)
     }
 }
 
