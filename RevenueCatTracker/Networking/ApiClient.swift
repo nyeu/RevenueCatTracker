@@ -84,11 +84,14 @@ class ApiClient: RevenueCatFetcher {
         var request = urlRequestWithBasicHeaders(url: url)
         request.httpMethod = "GET"
                 
-        let task = URLSession.shared.dataTask(with: request) { data, _, _ in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard
                 let data = data,
                 let obj = try? JSONDecoder().decode(T.self, from: data)
             else {
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 403 {
+                    mainStore.dispatch(MainStateAction.auth(Result.error("Token expired")))
+                }
                 return completion(nil)
             }
             completion(obj)
@@ -108,6 +111,9 @@ class ApiClient: RevenueCatFetcher {
                 let data = data,
                 let obj = try? JSONDecoder().decode(T.self, from: data)
             else {
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 403 {
+                    mainStore.dispatch(MainStateAction.auth(Result.error("Token expired")))
+                }
                 return completion(nil)
             }
 

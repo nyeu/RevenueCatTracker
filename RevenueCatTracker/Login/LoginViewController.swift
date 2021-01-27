@@ -68,20 +68,21 @@ class LoginViewController: UIViewController {
 // MARK: LoginViewModelDelegate
 extension LoginViewController: LoginViewModelDelegate {
     func updateView(oldState: LoginViewModel.LoginState?, newState: LoginViewModel.LoginState) {
-        loginView.emailTextField.text = newState.credentials?.email
-        loginView.passwordTextField.text = newState.credentials?.password
-        
-        if newState.auth != oldState?.auth, let auth = newState.auth {
-            switch auth {
-            case .success(let a):
-                SVProgressHUD.dismiss()
-                viewModel.persistAuth(a)
-                DispatchQueue.main.async {
-                    self.navigateToDashboard()
-                }
-            case .error(let error):
-                if let e = error {
-                    SVProgressHUD.showError(withStatus: e)
+        DispatchQueue.main.async {
+            self.loginView.emailTextField.text = newState.credentials?.email
+            self.loginView.passwordTextField.text = newState.credentials?.password
+            
+            if newState.auth != oldState?.auth, let auth = newState.auth {
+                switch auth {
+                case .success:
+                    SVProgressHUD.dismiss()
+                    DispatchQueue.main.async {
+                        self.navigateToDashboard()
+                    }
+                case .error(let error):
+                    if let e = error {
+                        SVProgressHUD.showError(withStatus: e)
+                    }
                 }
             }
         }

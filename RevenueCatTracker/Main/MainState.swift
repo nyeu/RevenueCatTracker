@@ -34,6 +34,7 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
         state.credentials = credentials
     case .auth(let auth):
         state.auth = auth
+        persistAuth(auth)
     case .overviewFetched(let overview):
         state.overview = overview
     case .transactionsFetched(let transactionResult):
@@ -55,6 +56,19 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     }
 
     return state
+}
+
+func persistAuth(_ resultAuth: Result<Auth>) {
+    switch resultAuth {
+    case .success(let auth):
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(auth) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: Auth.persistedKey)
+        }
+    default:
+        UserDefaults.standard.set(nil, forKey: Auth.persistedKey)
+    }
 }
 
 enum MainStateAction: Action {

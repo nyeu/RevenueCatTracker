@@ -66,14 +66,36 @@ class TransactionsViewController: UIViewController {
         }))
         present(alert, animated: true, completion: nil)
     }
+    
+    func navigateToLogin() {
+        let logingVC = LoginViewController(viewModel: LoginViewModel(validator: Validator()))
+        logingVC.modalPresentationStyle = .fullScreen
+        present(logingVC, animated: true, completion: nil)
+    }
 }
 
 // MARK: StoreSubscriber
 extension TransactionsViewController: TransactionsViewModelDelegate {
     func updateView(newState: TransactionsViewModel.TransactionState, oldState: TransactionsViewModel.TransactionState?) {
+        guard tokenIsValid(state: newState) else {
+            return
+        }
         transactionView.collectionView.reloadData()
         transactionView.filterButton.isEnabled = newState.apps.count > 0
         transactionView.searchButton.isEnabled = newState.apps.count > 0
+    }
+    
+    private func tokenIsValid(state: TransactionsViewModel.TransactionState) -> Bool {
+        guard let auth = state.auth else {
+            return false
+        }
+        switch auth {
+        case .success:
+            return true
+        default:
+            self.navigateToLogin()
+            return false
+        }
     }
 }
 

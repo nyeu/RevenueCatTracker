@@ -90,11 +90,13 @@ extension TransactionsViewModel {
         var sandboxMode: Bool
         var apps: [App]
         var filter: Filter
+        var auth: Result<Auth>?
 
         init(_ state: MainState) {
             sandboxMode = state.sandboxMode
             apps = state.apps
             filter = state.transactionFilter
+            auth = state.auth
             
             switch filter {
             case .none:

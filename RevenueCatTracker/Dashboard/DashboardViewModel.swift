@@ -46,10 +46,12 @@ extension DashboardViewModel {
     struct DashboardState: Equatable {
         var overview: Overview?
         var sandboxMode: Bool
+        var auth: Result<Auth>?
         
         init(_ state: MainState) {
             overview = state.overview
             sandboxMode = state.sandboxMode
+            auth = state.auth
         }
     }
 }

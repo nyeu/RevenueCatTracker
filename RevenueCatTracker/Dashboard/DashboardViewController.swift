@@ -47,11 +47,35 @@ class DashboardViewController: UIViewController {
         viewModel.delegate = self
         setupCollectionView()
     }
+    
+    func navigateToLogin() {
+        DispatchQueue.main.async {
+            let logingVC = LoginViewController(viewModel: LoginViewModel(validator: Validator()))
+            logingVC.modalPresentationStyle = .fullScreen
+            self.present(logingVC, animated: true, completion: nil)
+        }
+    }
 }
 
 extension DashboardViewController: DashboardViewModelDelegate {
     func updateView(newState: DashboardViewModel.DashboardState, oldState: DashboardViewModel.DashboardState?) {
+        guard tokenIsValid(state: newState) else {
+            return
+        }
         dashboardView.collectionView.reloadData()
+    }
+    
+    private func tokenIsValid(state: DashboardViewModel.DashboardState) -> Bool {
+        guard let auth = state.auth else {
+            return false
+        }
+        switch auth {
+        case .success:
+            return true
+        default:
+            self.navigateToLogin()
+            return false
+        }
     }
 }
 

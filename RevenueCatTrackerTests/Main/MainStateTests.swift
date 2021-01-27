@@ -63,6 +63,35 @@ class MainStateTests: XCTestCase {
         }
     }
     
+    func testPersistsAuthWithSuccess() {
+        let token = "aToken"
+        let expirationDate = "ExpirationDate"
+        let auth = Auth(authenticationToken: token,
+                        expirationToken: expirationDate)
+        
+        persistAuth(Result.success(auth))
+
+        let defaultsData = UserDefaults.standard.object(forKey: Auth.persistedKey) as? Data
+        let authObject = try? JSONDecoder().decode(Auth.self, from: defaultsData!)
+        XCTAssertEqual(authObject, auth)
+    }
+    
+    func testPersistsAuthWithErrorWithMessage() {
+        persistAuth(Result.error("Some error"))
+
+        let defaultsData = UserDefaults.standard.object(forKey: Auth.persistedKey) as? Data
+       
+        XCTAssertNil(defaultsData)
+    }
+    
+    func testPersistsAuthWithErrorWithoutMessage() {
+        persistAuth(Result.error(nil))
+
+        let defaultsData = UserDefaults.standard.object(forKey: Auth.persistedKey) as? Data
+       
+        XCTAssertNil(defaultsData)
+    }
+    
     func testOverview() {
         let mockedIntValue = 10
         let mockedDoubleValue = 100.0

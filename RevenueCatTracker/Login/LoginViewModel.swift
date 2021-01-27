@@ -20,14 +20,6 @@ class LoginViewModel {
         self.validator = validator
     }
     
-    func persistAuth(_ auth: Auth) {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(auth) {
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: Auth.persistedKey)
-        }
-    }
-    
     func validateCredentials(_ credentials: Credentials) -> Bool {
         return credentials.password.count > 0 && validator.isValidEmail(credentials.email)
     }
